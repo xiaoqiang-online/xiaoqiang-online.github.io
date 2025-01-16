@@ -1,7 +1,7 @@
 # SeniorHighschool
 
 ## Physics
-* [高中物理（宋晓磊）](https://space.bilibili.com/21780971/channel/seriesdetail?sid=260338)    
+* [高中物理（宋晓磊）](https://space.bilibili.com/21780971/lists/260338?type=series)    
 * [必修三第一章：静电场](https://space.bilibili.com/10453927/channel/collectiondetail?sid=3825307)    
 * [必修三第二章：电路及其应用](https://space.bilibili.com/10453927/channel/collectiondetail?sid=4090474)     
 * [必修三第三章：磁场](https://space.bilibili.com/10453927/channel/collectiondetail?sid=4291920)    
