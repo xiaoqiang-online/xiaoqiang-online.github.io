@@ -3,34 +3,89 @@
 <head>
 <meta charset="utf-8">
 <title>物理</title>
+
 <style type="text/css">
-<!-- 
-.STYLE1 {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 25px;
-	font-weight: bold;  
-}
-.STYLE2 {font-family: "Times New Roman", Times, serif}
-.STYLE3 {
-	font-size: 8px;
-	font-weight: bold;
-	color:#0073AA;
-}
-.STYLE4 {
-	font-family: "", Times, serif;
-	font-size: 25px;
-	font-weight: bold;
-	padding-left:40px;
-}
-.STYLE5 {
-	font-family: "Times New Roman", Times, serif;
-	font-weight: bold;
-	}
--->
 h1{font-size:23px;} 
+
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-container {
+            flex: 3;
+        }
+
+        .button-container {
+            flex: 2;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
 </style>
 
+ <style>
+        /* 整体容器样式 */
+        #video-selection-container {
+            width: 1000px;
+            height: 570px;
+            border: 1px solid #ccc;
+            overflow-y: auto;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 隐藏子菜单 */
+        ul ul {
+            display: none;
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        /* 菜单项按钮样式 */
+        .menu-item {
+            background-color: #f9f9f9;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: #e9e9e9;
+        }
+
+        /* 滚动条样式 */
+        #video-selection-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #video-selection-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        #video-selection-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        #video-selection-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+
 <script>
+
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -38,55 +93,95 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-</script>
 
-<script language="JavaScript">
-<!--var  password=""; password=prompt('请输入密码 (本网站需输入密码才可进入):',''); if (password != 'vr')   {alert("密码不正确,无法进入本站!!");  window.opener=null; window.close();}  // 密码不正确就关闭
-//-->
+function jumpToTime(seconds, src) {
+      var video = document.getElementById('myVideo');
+      
+	  if (src != video.src)
+	  {
+            video.src = src;
+            // 加载新视频
+            video.load();
+            // 播放新视频
+            video.play();
+	  }
+	  video.currentTime = seconds;
+    }
+	
 </script>
 
 </head>
 
 
 <body>
+
+<h1 id="高中物理（宋晓磊）"> 1.高中物理（宋晓磊）</h1>
+
 <div class="container">
 
 <hr>
-<h1 id="高中物理（宋晓磊）"> 1.高中物理（宋晓磊）</h1>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-
 <body>
    <video id="myVideo" controls>
-    <source src="video.mp4" type="video/mp4">
-    你的浏览器不支持视频播放。
+    <source src="https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4" type="video/mp4">
   </video>
   <br>
-  <!-- 按钮 -->
-  <button onclick="jumpToTime(10)">跳转到第10秒</button>
-  <button onclick="jumpToTime(30)">跳转到第30秒</button>
-  <button onclick="jumpToTime(60)">跳转到第60秒</button>
 
-  <script>
-    function jumpToTime(seconds) {
-      var video = document.getElementById('myVideo');
-      video.currentTime = seconds;
-    }
-  </script>
+ <div id="video-selection-container">
+        <ul id="video-menu">
+            <li>
+                <button class="menu-item" onclick="toggleSubMenu(this)">1.名师带你快速上手高中物理</button>
+				<ul class="default-open">
+					<li>
+						<button class="menu-item" onclick="toggleSubMenu(this)">1.1了解电路（上）</button>
+					
+						<ul class="default-open">
+							<li><button class="menu-item" onclick="jumpToTime(10,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.1---</button></li>
+							<li><button class="menu-item" onclick="jumpToTime(20,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.2---</button></li>
+						</ul>
+						<li>
+						<button class="menu-item" onclick="toggleSubMenu(this)">1.2了解电路（下）</button>
+					
+						<ul class="default-open">
+							<li><button class="menu-item" onclick="jumpToTime(110,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.2了解电路（下）.mp4')">1.2.1---</button></li>
+							<li><button class="menu-item" onclick="jumpToTime(120,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.2了解电路（下）.mp4')">1.2.2---</button></li>
+						</ul>
+					</li>
+					</li>
+				</ul>
+            </li>
+			<li>
+                <button class="menu-item" onclick="toggleSubMenu(this)">2.下一个课程</button>
+				
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleSubMenu(button) {
+            const parentLi = button.parentNode;
+            const subMenu = parentLi.querySelector('ul');
+            if (subMenu) {
+                if (subMenu.style.display === 'none' || subMenu.style.display === '') {
+                    subMenu.style.display = 'block';
+                } else {
+                    subMenu.style.display = 'none';
+                }
+            }
+        }
+		
+		 // 页面加载时展开默认的子菜单
+        window.onload = function () {
+            const defaultOpenMenus = document.querySelectorAll('.default-open');
+            defaultOpenMenus.forEach(function (menu) {
+                menu.style.display = 'block';
+            });
+        };
+    </script>
+
+
+</div>
 </body>
-
 </html>
-
-  		   
-			
-<hr>
-
-
-</div></body>
