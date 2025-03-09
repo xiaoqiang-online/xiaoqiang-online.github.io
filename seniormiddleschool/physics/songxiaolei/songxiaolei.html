@@ -100,34 +100,7 @@ h1{font-size:23px;}
         }
     </style>
 
-<script>
-
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c9ace36977e5a78c7ca4e74786e1710";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-
-function jumpToTime(seconds, src) {
-      var video = document.getElementById('myVideo');
-      
-	  if (src != video.src)
-	  {
-            video.src = src;
-            // 加载新视频
-            video.load();
-            // 播放新视频
-            video.play();
-	  }
-	  video.currentTime = seconds;
-    }
-	
-</script>
-
 </head>
-
 
 <body>
 
@@ -164,6 +137,7 @@ function jumpToTime(seconds, src) {
 							<li><button class="menu-item" onclick="toggleSubMenu(this);jumpToTime(60*37+0,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')"> <span class="symbol minus"></span>1.1.3电路</button>
 								<ul class="default-open">
 									<li><button class="menu-item" onclick="jumpToTime(60*37+44,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.3.1类型和构造：通路、开路、短路</button></li>
+									<li><button class="menu-item" onclick="jumpToTime(60*37+44,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.3.1类型和构造：通路、开路、短路</button></li>
 								</ul>
 						</ul>
 					</li>  <!-- 了解电路（上） -->
@@ -185,7 +159,12 @@ function jumpToTime(seconds, src) {
         </ul>
  </div>
 
-    <script>
+
+
+</div>
+</body>
+
+<script>
         function toggleSubMenu(button) {
             const parentLi = button.parentNode;
             const subMenu = parentLi.querySelector('ul');
@@ -212,9 +191,34 @@ function jumpToTime(seconds, src) {
                 menu.style.display = 'block';
             });
         };
+		
+		
+        const video = document.getElementById('myVideo');
+        const seekStep = 10; // 自定义快进/快退的秒数
+        video.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'ArrowLeft':
+                    video.currentTime = Math.max(0, video.currentTime - seekStep);
+                    break;
+                case 'ArrowRight':
+                    video.currentTime = Math.min(video.duration, video.currentTime + seekStep);
+                    break;
+            }
+        });
+
+		function jumpToTime(seconds, src) {
+			  var video = document.getElementById('myVideo');
+			  
+			  if (src != video.src)
+			  {
+					video.src = src;
+					// 加载新视频
+					video.load();
+					// 播放新视频
+					video.play();
+			  }
+			  video.currentTime = seconds;
+			}
     </script>
-
-
-</div>
-</body>
+	
 </html>
