@@ -1,38 +1,43 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>物理</title>
+    <meta charset="utf-8">
+    <title>物理</title>
+    <style type="text/css">
+        h1 {
+            font-size: 23px;
+        }
 
-<style type="text/css">
-h1{font-size:23px;} 
-
+        /* 整体布局容器 */
         .container {
             display: flex;
             align-items: center;
         }
 
+        /* 视频容器 */
         .video-container {
             flex: 3;
         }
 
+        /* 按钮（菜单）容器 */
         .button-container {
             flex: 2;
             text-align: center;
         }
 
+        /* 视频样式 */
         video {
             width: 100%;
         }
 
+        /* 按钮通用样式 */
         button {
             padding: 10px 20px;
             font-size: 16px;
         }
-</style>
 
- <style>
-        /* 整体容器样式 */
+        /* 视频选择容器样式 */
         #video-selection-container {
             width: 1000px;
             height: 570px;
@@ -82,7 +87,8 @@ h1{font-size:23px;}
         #video-selection-container::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
-		/* 符号元素样式 */
+
+        /* 符号元素样式 */
         .menu-item .symbol {
             margin-right: 5px;
             width: 10px;
@@ -98,127 +104,170 @@ h1{font-size:23px;}
         .menu-item .symbol.minus::before {
             content: '-';
         }
-    </style>
 
+        /* 高亮样式 */
+        .menu-item.highlight {
+            background-color: #d3d3d3;
+        }
+    </style>
 </head>
 
 <body>
-
-<h1 id="高中物理（宋晓磊）"> 1.高中物理（宋晓磊）</h1>
-
-<div class="container">
-
-<hr>
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
-   <video id="myVideo" controls>
-    <source src="https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4" type="video/mp4">
-  </video>
-  <br>
-
- <div id="video-selection-container">
-        <ul id="video-menu">
-            <li>
-                <button class="menu-item" onclick="toggleSubMenu(this)">  <span class="symbol minus"></span>1.名师带你快速上手高中物理</button>
-				<ul class="default-open">
-					<li>
-						<button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.1了解电路（上）</button>
-						<ul class="default-open">
-							<li><button class="menu-item" onclick="jumpToTime(0,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.1开场</button></li>
-							<li><button class="menu-item" onclick="toggleSubMenu(this);jumpToTime(60*5+16,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')"> <span class="symbol minus"></span>1.1.2电荷</button>
-								<ul class="default-open">
-									<li><button class="menu-item" onclick="jumpToTime(60*7+34,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.2.1正负电荷</button></li>
-									<li><button class="menu-item" onclick="jumpToTime(60*8+0,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.2.2带电现象</button></li>
-									<li><button class="menu-item" onclick="jumpToTime(60*10+0,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.2.3验电器</button></li>
-									<li><button class="menu-item" onclick="jumpToTime(60*15+52,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.2.4带电方式：摩擦起电、接触起电、感应起电</button></li>
-								</ul>
-							<li><button class="menu-item" onclick="toggleSubMenu(this);jumpToTime(60*37+0,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')"> <span class="symbol minus"></span>1.1.3电路</button>
-								<ul class="default-open">
-									<li><button class="menu-item" onclick="jumpToTime(60*37+44,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.3.1类型和构造：通路、开路、短路</button></li>
-									<li><button class="menu-item" onclick="jumpToTime(60*37+44,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.1了解电路（上）.mp4')">1.1.3.1类型和构造：通路、开路、短路</button></li>
-								</ul>
-						</ul>
-					</li>  <!-- 了解电路（上） -->
-					<li>
-						<button class="menu-item" onclick="toggleSubMenu(this)">  <span class="symbol minus"></span>1.2了解电路（下）</button>
-					
-						<ul class="default-open">
-							<li><button class="menu-item" onclick="jumpToTime(110,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.2了解电路（下）.mp4')">1.2.1---</button></li>
-							<li><button class="menu-item" onclick="jumpToTime(120,'https://mp-a7eb714b-e3e9-44e3-a664-f520079f12d2.cdn.bspapp.com/seniormiddleschool/physics/宋晓磊/名师带你快速上手高中物理/1.2了解电路（下）.mp4')">1.2.2---</button></li>
-						</ul>
-					</li> <!-- 了解电路（下） -->
-					
-				</ul>
-            </li>
-			<li>
-                <button class="menu-item" onclick="toggleSubMenu(this)">2.下一个课程</button>
-				
-            </li>
-        </ul>
- </div>
-
-
-
-</div>
-</body>
-
-<script>
+    <h1 id="高中物理（宋晓磊）"> 1.高中物理（宋晓磊）</h1>
+    <div class="container">
+        <!-- 嵌入 B 站视频 -->
+        <iframe id="bilibili-video" src="https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1"
+                width="1000" height="750" frameborder="no" scrolling="no" allowfullscreen="allowfullscreen" high_quality=1>
+        </iframe>
+        <div id="video-selection-container">
+            <ul id="video-menu">
+                <li>
+                    <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.名师带你快速上手高中物理</button>
+                    <ul class="default-open">
+                        <li>
+                            <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.1了解电路（上）</button>
+                            <ul class="default-open">
+                                <li><button class="menu-item" data-time="0" onclick="jumpToTime(0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.1(00:00:00)开场</button></li>
+                                <li>
+                                    <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.1.2电荷</button>
+                                    <ul class="default-open">
+                                        <li><button class="menu-item" data-time="316" onclick="jumpToTime(60*5+16,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.2.1(00:05:16)电荷</button></li>
+                                        <li><button class="menu-item" data-time="454" onclick="jumpToTime(60*7+34,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.2.2正负电荷(00:07:34)</button></li>
+                                        <li><button class="menu-item" data-time="480" onclick="jumpToTime(60*8+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.2.3带电现象(00:08:00)</button></li>
+                                        <li><button class="menu-item" data-time="600" onclick="jumpToTime(60*10+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.2.4验电器(00:10:00)</button></li>
+                                        <li><button class="menu-item" data-time="952" onclick="jumpToTime(60*15+52,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.2.5带电方式：摩擦起电、接触起电、感应起电(00:15:52)</button></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.1.3电路</button>
+                                    <ul class="default-open">
+                                        <li><button class="menu-item" data-time="2220" onclick="jumpToTime(60*37+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.3.1电路(00:37:00)</button></li>
+                                        <li><button class="menu-item" data-time="2264" onclick="jumpToTime(60*37+44,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.3.2类型和构造：通路、开路、短路(00:37:44)</button></li>
+                                        <li><button class="menu-item" data-time="2610" onclick="jumpToTime(60*43+30,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1.3.3原件符号(00:43:30)</button></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>  <!-- 了解电路（上） -->
+                        <li>
+                            <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.2了解电路（下）</button>
+                            <ul class="default-open">
+                                <li><button class="menu-item" data-time="110" onclick="jumpToTime(110,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.1---</button></li>
+                                <li><button class="menu-item" data-time="120" onclick="jumpToTime(120,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.2---</button></li>
+                            </ul>
+                        </li> <!-- 了解电路（下） -->
+                    </ul>
+                </li>
+                <li>
+                    <button class="menu-item" onclick="toggleSubMenu(this)">2.下一个课程</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /**
+         * 切换子菜单的显示状态
+         * @param {HTMLElement} button - 点击的按钮元素
+         */
         function toggleSubMenu(button) {
             const parentLi = button.parentNode;
             const subMenu = parentLi.querySelector('ul');
-			const symbol = button.querySelector('.symbol');
+            const symbol = button.querySelector('.symbol');
             if (subMenu) {
                 if (subMenu.style.display === 'none' || subMenu.style.display === '') {
                     subMenu.style.display = 'block';
-					// 切换为减号样式
+                    // 切换为减号样式
                     symbol.classList.remove('plus');
                     symbol.classList.add('minus');
                 } else {
                     subMenu.style.display = 'none';
-					// 切换为加号样式
+                    // 切换为加号样式
                     symbol.classList.remove('minus');
                     symbol.classList.add('plus');
                 }
             }
         }
-		
-		 // 页面加载时展开默认的子菜单
+
+        /**
+         * 页面加载时展开默认的子菜单
+         */
         window.onload = function () {
             const defaultOpenMenus = document.querySelectorAll('.default-open');
             defaultOpenMenus.forEach(function (menu) {
                 menu.style.display = 'block';
             });
+            highlightMenuItemByTime();
+			
+			// 获取 iframe 元素
+			const iframe = document.getElementById('bilibili-video');
+			if (iframe) 
+			{
+				// 向 B 站播放器发送获取当前时间的消息
+				iframe.contentWindow.postMessage({ cmd: 'getCurrentTime' }, '*');
+
+				// 每隔一段时间（例如 1 秒）主动询问播放器当前时间，以实现实时更新
+				setInterval(() => {
+					iframe.contentWindow.postMessage({ cmd: 'getCurrentTime' }, '*');
+				}, 1000);
+        }
         };
 		
+		/**
+         * 检查视频播放进度并更新菜单高亮
+         */
+        function checkVideoProgress() {
+            
+        }
 		
-        const video = document.getElementById('myVideo');
-        const seekStep = 10; // 自定义快进/快退的秒数
-        video.addEventListener('keydown', function(event) {
-            switch(event.key) {
-                case 'ArrowLeft':
-                    video.currentTime = Math.max(0, video.currentTime - seekStep);
-                    break;
-                case 'ArrowRight':
-                    video.currentTime = Math.min(video.duration, video.currentTime + seekStep);
-                    break;
-            }
-        });
-
-		function jumpToTime(seconds, src) {
-			  var video = document.getElementById('myVideo');
-			  
-			  if (src != video.src)
-			  {
-					video.src = src;
-					// 加载新视频
-					video.load();
-					// 播放新视频
-					video.play();
-			  }
-			  video.currentTime = seconds;
+		window.addEventListener('message', function (event) {
+			if (event.data && event.data.cmd ==='seek') {
+				// 这里的 event.data.currentTime 就是当前播放进度（秒数）
+				highlightMenuItemByTime(event.data.currentTime);
 			}
+		});
+
+        /**
+         * 跳转到视频指定时间
+         * @param {number} seconds - 要跳转的时间（秒）
+         * @param {string} src - 视频的源地址
+         */
+        function jumpToTime(seconds, src) {
+            var videoFrame = document.getElementById('bilibili-video');
+            if (src !== videoFrame.src) {
+                videoFrame.src = src;
+            }
+            // 检查是否已经存在时间参数
+            if (videoFrame.src.includes('&t=')) {
+                // 如果存在，替换时间参数
+                videoFrame.src = videoFrame.src.replace(/&t=\d+/, '&t=' + seconds);
+            } else {
+                // 如果不存在，添加时间参数
+                videoFrame.src += '&t=' + seconds;
+            }
+            highlightMenuItemByTime(seconds);
+        }
+
+        /**
+         * 根据当前时间高亮显示菜单项
+         * @param {number} [time] - 可选参数，指定的时间（秒），如果未提供则从 URL 中获取
+         */
+        function highlightMenuItemByTime(time) {
+
+            const menuItems = document.querySelectorAll('.menu-item[data-time]');
+            const videoFrame = document.getElementById('bilibili-video');
+            if (!time) {
+                const url = videoFrame.src;
+                const match = url.match(/&t=(\d+)/);
+                time = match ? parseInt(match[1]) : 0;
+            }
+            menuItems.forEach(item => {
+                item.classList.remove('highlight');
+                const itemTime = parseInt(item.dataset.time);
+                if (itemTime <= time) {
+                   item.classList.add('highlight');
+                }
+            });
+        }
     </script>
-	
+</body>
+
 </html>

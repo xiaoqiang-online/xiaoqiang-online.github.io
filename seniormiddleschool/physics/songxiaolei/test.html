@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌入 B 站视频并获取播放进度</title>
+</head>
+
+<body>
+    <!-- 嵌入 B 站视频的 iframe -->
+    <iframe id="bilibiliPlayer" src="https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1"
+                width="1000" height="750" frameborder="no" scrolling="no" allowfullscreen="allowfullscreen" high_quality=1>
+        </iframe>
+    <div id="progressDisplay">当前播放进度：0 秒</div>
+
+    <script>
+        const iframe = document.getElementById('bilibiliPlayer');
+        let isIframeReady = false;
+		var cuT=1000;
+		
+		function get_current_playing_time() 
+		{
+			const current_time_element = document.querySelector('.bpx-player-ctrl-time-current');
+			if (current_time_element) {
+				const current_time_str = current_time_element.textContent.trim();
+				return current_time_str;
+			}
+        }
+		
+		function sendGetCurrentTimeMessage() 
+		{
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ cmd: 'getCurrentTime' }, '*');
+            }
+			cuT += 1;
+			cuT = get_current_playing_time();
+			const progressDisplay = document.getElementById('progressDisplay');
+            progressDisplay.textContent = `当前播放进度：${cuT} 秒`;
+			
+			
+			return 0;
+		}
+
+        // 监听 iframe 的 load 事件，确保 iframe 加载完成后再进行操作
+        iframe.addEventListener('load', function () 
+		{
+            isIframeReady = true;
+            // 向 B 站播放器发送获取当前时间的消息
+            sendGetCurrentTimeMessage();
+
+            // 每隔一段时间（例如 1 秒）主动询问播放器当前时间，以实现实时更新
+            setInterval(() => {
+                if (isIframeReady) {
+                    sendGetCurrentTimeMessage();
+                }
+            }, 1000);
+        });
+		
+		
+
+        // 监听窗口的 message 事件，用于接收 B 站播放器发送的消息
+        iframe.addEventListener('message', function (event) {
+			
+            if (event.data && event.data.cmd === 'currentTime') {
+                const currentTime = event.data.data;
+                const progressDisplay = document.getElementById('progressDisplay');
+                progressDisplay.textContent = `当前播放进度：${cuT} 秒`;
+            }
+        });
+    </script>
+</body>
+
+</html>
