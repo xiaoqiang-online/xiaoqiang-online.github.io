@@ -8,6 +8,10 @@
         h1 {
             font-size: 23px;
         }
+		h2 {
+            font-size: 23px;
+			color: blue;
+        }
 
         /* 整体布局容器 */
         .container {
@@ -114,6 +118,7 @@
 
 <body>
     <h1 id="名师带你快速上手高中物理"> 高中物理（宋晓磊）/名师带你快速上手高中物理</h1>
+	<h2 id="Title"> 1了解电路（上）</h2>
     <div class="container">
         <!-- 嵌入 B 站视频 -->
         <iframe id="bilibili-video" src="https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1"
@@ -125,23 +130,27 @@
                 <li>
                     <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1了解电路（上）</button>
                     <ul class="default-open">
-                        <li><button class="menu-item" data-time="0" onclick="jumpToTime(0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1(00:00)开场</button></li>
+                        <li><button class="menu-item" data-time="0" onclick="jumpToTime('1了解电路（上）',0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.1开场(0:0)</button></li>
                         <li>
                             <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.2电荷</button>
                             <ul class="default-open">
-                                <li><button class="menu-item" data-time="316" onclick="jumpToTime(60*5+16,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.1(05:16)电荷</button></li>
-                                <li><button class="menu-item" data-time="454" onclick="jumpToTime(60*7+34,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.2正负电荷(07:34)</button></li>
-                                <li><button class="menu-item" data-time="480" onclick="jumpToTime(60*8+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.3带电现象(08:00)</button></li>
-                                <li><button class="menu-item" data-time="600" onclick="jumpToTime(60*10+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.4验电器(10:00)</button></li>
-                                <li><button class="menu-item" data-time="952" onclick="jumpToTime(60*15+52,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.5带电方式：摩擦起电、接触起电、感应起电(15:52)</button></li>
+                                <li><button class="menu-item" data-time="1" onclick="jumpToTime('1了解电路（上）',60*5+16,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.1电荷(05:16)</button></li>
+                                <li><button class="menu-item" data-time="2" onclick="jumpToTime('1了解电路（上）',60*7+34,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.2正负电荷(07:34)</button></li>
+                                <li><button class="menu-item" data-time="3" onclick="jumpToTime('1了解电路（上）',60*8+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.3带电现象(08:00)</button></li>
+                                <li><button class="menu-item" data-time="4" onclick="jumpToTime('1了解电路（上）',60*10+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.4验电器(10:00)</button></li>
+                                <li><button class="menu-item" data-time="5" onclick="jumpToTime('1了解电路（上）',60*15+52,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.2.5带电方式：摩擦起电、接触起电、感应起电(15:52)</button></li>
                             </ul>
                         </li>
                         <li>
                             <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.3电路</button>
                             <ul class="default-open">
-                                <li><button class="menu-item" data-time="2220" onclick="jumpToTime(60*37+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.1电路(37:00)</button></li>
-                                <li><button class="menu-item" data-time="2264" onclick="jumpToTime(60*37+44,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.2类型和构造：通路、开路、短路(37:44)</button></li>
-                                <li><button class="menu-item" data-time="2610" onclick="jumpToTime(60*43+30,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.3原件符号(43:30)</button></li>
+                                <li><button class="menu-item" data-time="6" onclick="jumpToTime('1了解电路（上）',60*37+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.1电路(37:00)</button></li>
+                                <li><button class="menu-item" data-time="7" onclick="jumpToTime('1了解电路（上）',60*37+44,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.2类型和构造：通路、开路、短路(37:44)</button></li>
+                                <li><button class="menu-item" data-time="8" onclick="jumpToTime('1了解电路（上）',60*43+30,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.3原件符号：定值电路、滑动变阻器(43:30)</button></li>
+                            </ul>
+							<button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>1.4电路规律</button>
+                            <ul class="default-open">
+                                <li><button class="menu-item" data-time="9" onclick="jumpToTime('1了解电路（上）',60*50+40,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">1.3.1电阻：电阻公式、电阻定律(50:40)</button></li>
                             </ul>
                         </li>
                     </ul>
@@ -149,13 +158,19 @@
                 <li>
                     <button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>2了解电路（下）</button>
                     <ul class="default-open">
-                        <li><button class="menu-item" data-time="110" onclick="jumpToTime(110,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">2.1---</button></li>
-                        <li><button class="menu-item" data-time="120" onclick="jumpToTime(120,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76141944&p=1')">2.2---</button></li>
+                        <li><button class="menu-item" data-time="10" onclick="jumpToTime('2了解电路（下）',0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76147083&p=2')">2.1电阻（续）：导体、半导体、绝缘体、超导体、单位欧姆(0:0)</button></li>
+						<button class="menu-item" onclick="toggleSubMenu(this)"> <span class="symbol minus"></span>2.2电流</button>
+                            <ul class="default-open">
+                                <li><button class="menu-item" data-time="11" onclick="jumpToTime('2了解电路（下）',60*3+30,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76147083&p=2')">2.2.1电流：直流电流(3:30)</button></li>
+								<li><button class="menu-item" data-time="11" onclick="jumpToTime('2了解电路（下）',60*4+20,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76147083&p=2')">2.2.2方向(4:20)</button></li>
+								<li><button class="menu-item" data-time="11" onclick="jumpToTime('2了解电路（下）',60*7+0,'https://player.bilibili.com/player.html?isOutside=true&aid=43494015&bvid=BV1Bb411U7db&cid=76147083&p=2')">2.2.3大小(7:00)</button></li>
+                            </ul>
                     </ul>
                 </li> <!-- 了解电路（下） -->
             </ul>
         </div>
     </div>
+	 <li></li>
     <script>
         /**
          * 切换子菜单的显示状态
@@ -223,7 +238,10 @@
          * @param {number} seconds - 要跳转的时间（秒）
          * @param {string} src - 视频的源地址
          */
-        function jumpToTime(seconds, src) {
+        function jumpToTime(title, seconds, src) {
+			const textElement = document.getElementById('Title');
+			textElement.textContent = title;
+		
             var videoFrame = document.getElementById('bilibili-video');
             if (src !== videoFrame.src) {
                 videoFrame.src = src;
@@ -236,14 +254,14 @@
                 // 如果不存在，添加时间参数
                 videoFrame.src += '&t=' + seconds;
             }
-            highlightMenuItemByTime(seconds);
+            // highlightMenuItemByTime(seconds);
         }
 
         /**
          * 根据当前时间高亮显示菜单项
-         * @param {number} [time] - 可选参数，指定的时间（秒），如果未提供则从 URL 中获取
+         * @param {number} [seconds] - 可选参数，指定的时间（秒），如果未提供则从 URL 中获取
          */
-        function highlightMenuItemByTime(time) {
+        function highlightMenuItemByTime(seconds) {
 
             const menuItems = document.querySelectorAll('.menu-item[data-time]');
             const videoFrame = document.getElementById('bilibili-video');
@@ -255,7 +273,7 @@
             menuItems.forEach(item => {
                 item.classList.remove('highlight');
                 const itemTime = parseInt(item.dataset.time);
-                if (itemTime <= time) {
+                if (itemTime <= seconds) {
                    item.classList.add('highlight');
                 }
             });
