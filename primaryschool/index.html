@@ -1,70 +1,91 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<title>小学</title>
-<style type="text/css">
-<!-- 
-.STYLE1 {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 25px;
-	font-weight: bold;  
-}
-.STYLE2 {font-family: "Times New Roman", Times, serif}
-.STYLE3 {
-	font-size: 8px;
-	font-weight: bold;
-	color:#0073AA;
-}
-.STYLE4 {
-	font-family: "", Times, serif;
-	font-size: 25px;
-	font-weight: bold;
-	padding-left:40px;
-}
-.STYLE5 {
-	font-family: "Times New Roman", Times, serif;
-	font-weight: bold;
-	}
--->
-h1{font-size:23px;} 
-</style>
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8c9ace36977e5a78c7ca4e74786e1710";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<script language="JavaScript">
-<!--var  password=""; password=prompt('请输入密码 (本网站需输入密码才可进入):',''); if (password != 'vr')   {alert("密码不正确,无法进入本站!!");  window.opener=null; window.close();}  // 密码不正确就关闭
-//-->
-</script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小学课程主页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      color: #333;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+    }
+    p.subtitle {
+      margin-bottom: 2.5rem;
+      color: #4a5b6b;
+      font-size: 1.05rem;
+    }
+    .cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      width: 200px;
+      padding: 2rem 1.5rem;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+    .card .icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .card .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .card .desc { font-size: 0.9rem; color: #888; }
+    .card.chinese { border-top: 6px solid #e74c3c; }
+    .card.math    { border-top: 6px solid #3498db; }
+    .card.english { border-top: 6px solid #2ecc71; }
+    .card.encyclopedia { border-top: 6px solid #9b59b6; }
+    footer { margin-top: 3rem; color: #5a6b7b; font-size: 0.85rem; }
+  </style>
 </head>
-
-
 <body>
-<div class="container">
+  <h1>小学课程学习平台</h1>
+  <p class="subtitle">请选择你想学习的科目</p>
 
-<hr>
-<h1 id="围棋"> 1.围棋</h1>
-<ul>
-<li> <a href="https://www.bilibili.com/video/BV1TM411h7Zb/?spm_id_from=333.337.search-card.all.click&vd_source=2797c7d807a5809180fecb38ba8bb8f1">少儿动画学围棋A(30集+1)</a></li>	
-<li> <a href="https://www.bilibili.com/video/BV1bm4y1v7e6?spm_id_from=333.788.videopod.episodes">【30集全】学围棋的孩子未来查差不了</a></li>  
-<li> <a href="https://www.bilibili.com/video/BV1uW411W7xK?spm_id_from=333.788.videopod.episodes&vd_source=2797c7d807a5809180fecb38ba8bb8f1">20天从零学会下围棋</a></li>  		   
-</ul>
-<hr>
+  <div class="cards">
+    <a class="card chinese" href="chinese.html">
+      <div class="icon">📖</div>
+      <div class="name">语文</div>
+      <div class="desc">字词 · 阅读 · 写作</div>
+    </a>
+    <a class="card math" href="math.html">
+      <div class="icon">🔢</div>
+      <div class="name">数学</div>
+      <div class="desc">计算 · 几何 · 思维</div>
+    </a>
+    <a class="card english" href="english.html">
+      <div class="icon">🔤</div>
+      <div class="name">英语</div>
+      <div class="desc">单词 · 句型 · 听说</div>
+    </a>
+    <a class="card encyclopedia" href="fanzhendong.html">
+      <div class="icon">🌍</div>
+      <div class="name">百科</div>
+      <div class="desc">樊振东发展历程</div>
+    </a>
+  </div>
 
-<h1 id="数学"> 2.数学</h1>
-<ul>
-<li> <a href="https://www.bilibili.com/video/BV1RJW6eREJL?spm_id_from=333.788.videopod.episodes">全60集【小学一年级数学思维训练及拓展】</a></li>  		
-<li> <a href="https://www.bilibili.com/video/BV1Zk9HYwENF?spm_id_from=333.788.videopod.episodes">木兰老师数学思维【全集】一年级全科</a></li>    
-</ul>
-
-
-</div></body>
+  <footer>© 小学课程学习平台</footer>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>樊振东</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      color: #333;
+      padding: 2rem;
+    }
+    .back {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #8e44ad;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .back:hover { background: #f6ecfa; }
+    h1 { color: #7d3c98; margin-bottom: 0.5rem; }
+    .content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .intro { color: #666; line-height: 1.8; margin-bottom: 1rem; }
+    .order-hint {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: #f4ecf7;
+      color: #8e44ad;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 1rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid #d2b4de;
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.8rem;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.5rem - 8px);
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      background: #9b59b6;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px #d2b4de;
+    }
+    .timeline-item .year {
+      font-weight: 700;
+      color: #8e44ad;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .item-body {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .photo-box {
+      flex-shrink: 0;
+      width: 160px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #f4ecf7 0%, #e8daef 100%);
+      border: 1px solid #e4d4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-box::after {
+      content: "🏓 " attr(data-year);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #b184c4;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+    .photo-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .photo-box:hover img { transform: scale(1.06); }
+    .photo-box video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #000;
+    }
+    .photo-box .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.25rem 0.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      color: #fff;
+      font-size: 0.72rem;
+      z-index: 1;
+    }
+
+    .item-text { flex: 1; min-width: 0; }
+    .events { list-style: none; margin: 0; }
+    .events li {
+      color: #444;
+      line-height: 1.7;
+      padding: 0.15rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .badge {
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      color: #fff;
+      line-height: 1.5;
+    }
+    .badge.gold   { background: #e6a817; }
+    .badge.silver { background: #98a3ad; }
+    .badge.info   { background: #9b59b6; }
+    .source {
+      display: inline-block;
+      margin-top: 0.35rem;
+      font-size: 0.78rem;
+      color: #a08bb0;
+      text-decoration: none;
+      border-bottom: 1px dotted #cbb6d8;
+    }
+    .source:hover { color: #8e44ad; border-bottom-color: #8e44ad; }
+    .note {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #ddd;
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.7;
+    }
+    .note code {
+      background: #f4ecf7;
+      color: #8e44ad;
+      padding: 0.05rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 620px) {
+      body { padding: 1rem; }
+      .content { padding: 1.25rem; }
+      .item-body { flex-direction: column; }
+      .photo-box { width: 100%; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back" href="index.html">← 返回主页</a>
+  <div class="content">
+    <h1>🏓 樊振东</h1>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2025 年 11 月 18 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2025 年 11 月">
+            <img src="images/FanZhendong/25.11.18-1.webp" alt="2025 年全运会男团四分之一决赛中庆祝的樊振东" />
+            <span class="caption">2025 年 · 全运会男团四分之一决赛</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge info">胜场</span>第十五届全国运动会乒乓球男子团体四分之一决赛（澳门）：代表上海队以 3 比 2 战胜河北队梁靖崑，比赛中挥拳庆祝。</li>
+            </ul>
+            <a class="source" href="https://baijiahao.baidu.com/s?id=1849188551381888453&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2025 年 11 月 16 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2025 年 11 月">
+            <img src="images/FanZhendong/25.11.16-1.webp" alt="2025 年全运会男单夺冠的樊振东" />
+            <span class="caption">2025 年 · 全运会男单夺冠</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>第十五届全国运动会乒乓球男子单打决赛：战胜林诗栋，夺得全运会男单冠军。</li>
+            </ul>
+            <a class="source" href="https://baijiahao.baidu.com/s?id=1849188551381888453&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2025 年 7 月 18 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2025 年 7 月">
+            <img src="images/FanZhendong/25.7.18-1.webp" alt="2025 年樊振东做客上海杨浦乒乓球选拔赛" />
+            <span class="caption">2025 年 · 做客杨浦乒乓球选拔赛</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge info">活动</span>来到杨浦区复兴岛船台 Park，“做客”上海市“国球三进”系列争霸赛暨“韵动杨浦·秀出来”乒乓球选拔赛，引燃现场球迷热情。</li>
+            </ul>
+            <a class="source" href="https://baijiahao.baidu.com/s?id=1849188551381888453&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2025 年 1 月 11 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2025 年 1 月">
+            <img src="images/FanZhendong/25.1.11-1.webp" alt="2025 年樊振东在微博之夜领奖" />
+            <span class="caption">2025 年 · 微博年度卓越体育人物</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">荣誉</span>参加 2024 微博之夜，荣获“微博年度卓越体育人物”奖。</li>
+            </ul>
+            <a class="source" href="https://bbs.hupu.com/629941035.html" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2024 年 12 月 27 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2024 年 12 月">
+            <video src="images/FanZhendong/24.12.27-1.mp4" controls muted playsinline preload="metadata"></video>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge info">变动</span>在社交媒体发文，宣布退出世界排名。</li>
+            </ul>
+            <a class="source" href="https://www.olympics.com/zh/news/fan-zhendong-announced-quitting-world-ranking" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2024 年 10 月 19 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2024 年 10 月">
+            <img src="images/FanZhendong/24.10.19-1.jpg" alt="2024 年全国乒乓球锦标赛男团决赛夺冠的樊振东" />
+            <span class="caption">2024 年 · 全锦赛男团三连冠</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>2024 年全国乒乓球锦标赛男团决赛：樊振东、许昕、周恺代表上海队 3 比 1 战胜黑龙江队，夺得男团冠军，成就三连冠。</li>
+            </ul>
+            <a class="source" href="https://m.gmw.cn/2024-10/19/content_1303876059.htm" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2024 年 9 月 22 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2024 年 9 月">
+            <img src="images/FanZhendong/24.9.22-1.jpg" alt="2024 年樊振东在大湾区电影音乐晚会上演唱" />
+            <span class="caption">2024 年 · 大湾区电影音乐晚会</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge info">活动</span>“湾区升明月”2024 大湾区电影音乐晚会在澳门唱响，樊振东与全红婵、汪峰（从左到右为全红婵、汪峰、樊振东）共同演唱《我爱你中国》。</li>
+            </ul>
+            <a class="source" href="https://www.news.cn/photo/20240923/44d646beae51483f9b69a4db5cd78d74/c.html?page=5" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2024 年 8 月 4 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2024 年 8 月">
+            <img src="images/FanZhendong/24.8.4-1.jpg" alt="2024 年巴黎奥运会乒乓球男子单打决赛中的樊振东" />
+            <span class="caption">2024 年 · 巴黎奥运会男单决赛</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>在巴黎奥运会乒乓球男单决赛中，以 4 比 1 击败瑞典选手特鲁斯·莫雷高德，夺得个人首枚奥运男单金牌。</li>
+              <li><span class="badge info">里程碑</span>成为包揽世界杯、世乒赛、奥运会单打冠军的大满贯选手。</li>
+            </ul>
+            <a class="source" href="https://www.rmzxw.com.cn/c/2024-08-05/3587567.shtml" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2024 年 2 月 25 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2024 年 2 月">
+            <img src="images/FanZhendong/24.2.25-1.png" alt="2024 年釜山世乒赛团体赛决赛中的樊振东" />
+            <span class="caption">2024 年 · 釜山世乒赛男团夺冠</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>釜山世乒赛团体赛男团决赛：樊振东 3 比 2 战胜艾利克斯·勒布伦，与王楚钦、马龙、林高远、梁靖崑组成的中国队以 3 比 0 战胜法国队夺冠。</li>
+              <li><span class="badge gold">荣誉</span>获得本届赛事最佳男运动员奖（MVP）。</li>
+            </ul>
+            <a class="source" href="http://www.huabkw.com/baike/45890/cid/23.html" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2023 年 5 月 28 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2023 年 5 月">
+            <img src="images/FanZhendong/23.5.28-1.png" alt="2023 年德班世乒赛男单决赛夺冠的樊振东" />
+            <span class="caption">2023 年 · 德班世乒赛男单卫冕</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>德班世乒赛压轴大戏男单决赛：世界排名第一、卫冕冠军樊振东以 4 比 2 击败自己的男双搭档、世界排名第二的王楚钦，连续两届比赛捧起圣·波勃莱德杯。</li>
+            </ul>
+            <a class="source" href="https://www.olympics.com/zh/news/ittf-world-table-tennis-championships-finals-2023-mens-single-final" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2019 年 12 月 15 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2019 年 12 月">
+            <img src="images/FanZhendong/19.12.15-1.jpeg" alt="2019 年国际乒联总决赛男单夺冠的樊振东" />
+            <span class="caption">2019 年 · 国际乒联总决赛男单夺冠</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>中国农业银行 2019 国际乒联总决赛落幕：男单决赛以 4 比 1 战胜马龙，收获个人第二座总决赛男单冠军。</li>
+            </ul>
+            <a class="source" href="https://cn.ittf.com/2019/12/wtgf-fzd-ms-cm-ws-winners/" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2014 年 8 月 20 日</div>
+        <div class="item-body">
+          <div class="photo-box" data-year="2014 年 8 月">
+            <img src="images/FanZhendong/14.8.20-1.png" alt="2014 年南京青奥会乒乓球男单决赛夺冠的樊振东" />
+            <span class="caption">2014 年 · 南京青奥会男单夺冠</span>
+          </div>
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge gold">冠军</span>南京青奥会乒乓球男单决赛：以 4 比 2 战胜日本选手村松佑都，获得冠军。</li>
+            </ul>
+            <a class="source" href="http://sports.people.com.cn/n/2014/0820/c383364-25504332.html" target="_blank" rel="noopener">来源 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">1997 年 1 月 22 日</div>
+        <div class="item-body">
+          <div class="item-text">
+            <ul class="events">
+              <li><span class="badge info">出生</span>出生于广东省广州市，祖籍湖南省衡阳市祁东县。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 素材缺失时：图片的 .jpg 先改试 .png，仍失败则隐藏素材、显示占位框
+    document.querySelectorAll(".photo-box img, .photo-box video").forEach(function (el) {
+      el.addEventListener("error", function () {
+        var src = el.getAttribute("src");
+        if (el.tagName === "IMG" && !el.dataset.triedPng && /\.jpg$/i.test(src)) {
+          el.dataset.triedPng = "1";
+          el.setAttribute("src", src.replace(/\.jpg$/i, ".png"));
+          return;
+        }
+        var caption = el.parentElement.querySelector(".caption");
+        if (caption) caption.remove();
+        el.remove();
+      });
+    });
+  </script>
+</body>
+</html>
