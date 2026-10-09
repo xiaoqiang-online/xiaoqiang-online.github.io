@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>语文</title>
+  <title>语文 · 小学古诗</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -25,28 +25,591 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     .back:hover { background: #fef0ec; }
-    h1 { color: #c0392b; margin-bottom: 1rem; }
+    h1 { color: #c0392b; margin-bottom: 0.5rem; }
+    .intro {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
     .content {
       background: #fff;
       border-radius: 16px;
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 700px;
+      max-width: 900px;
     }
-    ul { margin: 1rem 0 0 1.5rem; line-height: 2; }
+    .section-title {
+      font-size: 1.25rem;
+      color: #c0392b;
+      margin: 1.8rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #f5c6a5;
+    }
+    .section-title:first-of-type { margin-top: 0.5rem; }
+    .topics {
+      margin: 0 0 0 1.5rem;
+      line-height: 2;
+    }
+    .poem-list {
+      display: grid;
+      gap: 1.2rem;
+    }
+    .poem {
+      border: 1px solid #f0d4c0;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      background: #fffaf6;
+      transition: box-shadow 0.2s ease;
+    }
+    .poem:hover {
+      box-shadow: 0 6px 18px rgba(192, 57, 43, 0.1);
+    }
+    .poem-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .poem-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #c0392b;
+    }
+    .poem-meta {
+      font-size: 0.95rem;
+      color: #8a6a55;
+    }
+    .dynasty {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      background: #fde8d8;
+      color: #c0392b;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .poem-year {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      background: #eef4f8;
+      color: #5a6b7b;
+      font-size: 0.85rem;
+    }
+    .timeline-note {
+      font-size: 0.9rem;
+      color: #8a6a55;
+      margin: -0.4rem 0 1.2rem;
+      line-height: 1.6;
+    }
+    .poem-lines {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      line-height: 2;
+      font-size: 1.05rem;
+      color: #3a3a3a;
+      letter-spacing: 0.04em;
+    }
+    .poem-lines li { margin: 0; }
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .filter-bar button {
+      border: 1px solid #f0d4c0;
+      background: #fff;
+      color: #8a6a55;
+      border-radius: 20px;
+      padding: 0.35rem 0.9rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .filter-bar button.active,
+    .filter-bar button:hover {
+      background: #e74c3c;
+      border-color: #e74c3c;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .content { padding: 1.2rem; }
+      .poem { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
   <a class="back" href="index.html">← 返回主页</a>
   <div class="content">
     <h1>📖 语文</h1>
-    <p>欢迎来到语文学习页面！这里我们一起学习：</p>
-    <ul>
+    <p class="intro">欢迎来到语文学习页面。下方整理了小学常见必背古诗，包含朝代、大致创作年份、诗名、作者与全文语句，并按时间线从早到晚排列，方便背诵与复习。</p>
+
+    <h2 class="section-title">学习内容</h2>
+    <ul class="topics">
       <li>生字与拼音</li>
       <li>课文阅读与理解</li>
       <li>古诗词背诵</li>
       <li>作文与写作技巧</li>
     </ul>
+
+    <h2 class="section-title">小学古诗（按时间线）</h2>
+    <p class="timeline-note">下列年份多为学界常见考证或通行说法，部分篇目仅能确定大致区间；年份愈早愈靠前。</p>
+    <div class="filter-bar" id="filterBar">
+      <button type="button" class="active" data-dynasty="全部">全部</button>
+      <button type="button" data-dynasty="唐">唐</button>
+      <button type="button" data-dynasty="宋">宋</button>
+      <button type="button" data-dynasty="元">元</button>
+      <button type="button" data-dynasty="明">明</button>
+      <button type="button" data-dynasty="清">清</button>
+    </div>
+
+    <div class="poem-list" id="poemList">
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">咏鹅</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约公元 626 年</span>
+          <span class="poem-meta">骆宾王</span>
+        </div>
+        <ul class="poem-lines">
+          <li>鹅，鹅，鹅，曲项向天歌。</li>
+          <li>白毛浮绿水，红掌拨清波。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">风</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 680–700 年</span>
+          <span class="poem-meta">李峤</span>
+        </div>
+        <ul class="poem-lines">
+          <li>解落三秋叶，能开二月花。</li>
+          <li>过江千尺浪，入竹万竿斜。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">望庐山瀑布</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 725 年</span>
+          <span class="poem-meta">李白</span>
+        </div>
+        <ul class="poem-lines">
+          <li>日照香炉生紫烟，遥看瀑布挂前川。</li>
+          <li>飞流直下三千尺，疑是银河落九天。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">静夜思</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 726 年</span>
+          <span class="poem-meta">李白</span>
+        </div>
+        <ul class="poem-lines">
+          <li>床前明月光，疑是地上霜。</li>
+          <li>举头望明月，低头思故乡。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">古朗月行（节选）</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 720–740 年</span>
+          <span class="poem-meta">李白</span>
+        </div>
+        <ul class="poem-lines">
+          <li>小时不识月，呼作白玉盘。</li>
+          <li>又疑瑶台镜，飞在青云端。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">春晓</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 720–740 年</span>
+          <span class="poem-meta">孟浩然</span>
+        </div>
+        <ul class="poem-lines">
+          <li>春眠不觉晓，处处闻啼鸟。</li>
+          <li>夜来风雨声，花落知多少。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">登鹳雀楼</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 734 年</span>
+          <span class="poem-meta">王之涣</span>
+        </div>
+        <ul class="poem-lines">
+          <li>白日依山尽，黄河入海流。</li>
+          <li>欲穷千里目，更上一层楼。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">赠汪伦</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 755 年</span>
+          <span class="poem-meta">李白</span>
+        </div>
+        <ul class="poem-lines">
+          <li>李白乘舟将欲行，忽闻岸上踏歌声。</li>
+          <li>桃花潭水深千尺，不及汪伦送我情。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">枫桥夜泊</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 756 年</span>
+          <span class="poem-meta">张继</span>
+        </div>
+        <ul class="poem-lines">
+          <li>月落乌啼霜满天，江枫渔火对愁眠。</li>
+          <li>姑苏城外寒山寺，夜半钟声到客船。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">早发白帝城</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">公元 759 年</span>
+          <span class="poem-meta">李白</span>
+        </div>
+        <ul class="poem-lines">
+          <li>朝辞白帝彩云间，千里江陵一日还。</li>
+          <li>两岸猿声啼不住，轻舟已过万重山。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">春夜喜雨</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">公元 761 年</span>
+          <span class="poem-meta">杜甫</span>
+        </div>
+        <ul class="poem-lines">
+          <li>好雨知时节，当春乃发生。</li>
+          <li>随风潜入夜，润物细无声。</li>
+          <li>野径云俱黑，江船火独明。</li>
+          <li>晓看红湿处，花重锦官城。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">绝句</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">公元 764 年</span>
+          <span class="poem-meta">杜甫</span>
+        </div>
+        <ul class="poem-lines">
+          <li>两个黄鹂鸣翠柳，一行白鹭上青天。</li>
+          <li>窗含西岭千秋雪，门泊东吴万里船。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">赋得古原草送别</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 787 年</span>
+          <span class="poem-meta">白居易</span>
+        </div>
+        <ul class="poem-lines">
+          <li>离离原上草，一岁一枯荣。</li>
+          <li>野火烧不尽，春风吹又生。</li>
+          <li>远芳侵古道，晴翠接荒城。</li>
+          <li>又送王孙去，萋萋满别情。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">游子吟</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 791 年</span>
+          <span class="poem-meta">孟郊</span>
+        </div>
+        <ul class="poem-lines">
+          <li>慈母手中线，游子身上衣。</li>
+          <li>临行密密缝，意恐迟迟归。</li>
+          <li>谁言寸草心，报得三春晖。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">悯农（其一）</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 793–810 年</span>
+          <span class="poem-meta">李绅</span>
+        </div>
+        <ul class="poem-lines">
+          <li>锄禾日当午，汗滴禾下土。</li>
+          <li>谁知盘中餐，粒粒皆辛苦。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">江雪</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 805–815 年</span>
+          <span class="poem-meta">柳宗元</span>
+        </div>
+        <ul class="poem-lines">
+          <li>千山鸟飞绝，万径人踪灭。</li>
+          <li>孤舟蓑笠翁，独钓寒江雪。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">寻隐者不遇</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 810–830 年</span>
+          <span class="poem-meta">贾岛</span>
+        </div>
+        <ul class="poem-lines">
+          <li>松下问童子，言师采药去。</li>
+          <li>只在此山中，云深不知处。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="唐">
+        <div class="poem-header">
+          <span class="poem-title">池上</span>
+          <span class="dynasty">唐</span>
+          <span class="poem-year">约 835–845 年</span>
+          <span class="poem-meta">白居易</span>
+        </div>
+        <ul class="poem-lines">
+          <li>小娃撑小艇，偷采白莲回。</li>
+          <li>不解藏踪迹，浮萍一道开。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">梅花</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1060–1070 年代</span>
+          <span class="poem-meta">王安石</span>
+        </div>
+        <ul class="poem-lines">
+          <li>墙角数枝梅，凌寒独自开。</li>
+          <li>遥知不是雪，为有暗香来。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">元日</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1069 年</span>
+          <span class="poem-meta">王安石</span>
+        </div>
+        <ul class="poem-lines">
+          <li>爆竹声中一岁除，春风送暖入屠苏。</li>
+          <li>千门万户曈曈日，总把新桃换旧符。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">饮湖上初晴后雨</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">公元 1073 年</span>
+          <span class="poem-meta">苏轼</span>
+        </div>
+        <ul class="poem-lines">
+          <li>水光潋滟晴方好，山色空蒙雨亦奇。</li>
+          <li>欲把西湖比西子，淡妆浓抹总相宜。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">泊船瓜洲</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1075 年</span>
+          <span class="poem-meta">王安石</span>
+        </div>
+        <ul class="poem-lines">
+          <li>京口瓜洲一水间，钟山只隔数重山。</li>
+          <li>春风又绿江南岸，明月何时照我还。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">题西林壁</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">公元 1084 年</span>
+          <span class="poem-meta">苏轼</span>
+        </div>
+        <ul class="poem-lines">
+          <li>横看成岭侧成峰，远近高低各不同。</li>
+          <li>不识庐山真面目，只缘身在此山中。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">惠崇春江晚景</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">公元 1085 年</span>
+          <span class="poem-meta">苏轼</span>
+        </div>
+        <ul class="poem-lines">
+          <li>竹外桃花三两枝，春江水暖鸭先知。</li>
+          <li>蒌蒿满地芦芽短，正是河豚欲上时。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">小池</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1170–1180 年代</span>
+          <span class="poem-meta">杨万里</span>
+        </div>
+        <ul class="poem-lines">
+          <li>泉眼无声惜细流，树阴照水爱晴柔。</li>
+          <li>小荷才露尖尖角，早有蜻蜓立上头。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">四时田园杂兴（其一）</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1186 年</span>
+          <span class="poem-meta">范成大</span>
+        </div>
+        <ul class="poem-lines">
+          <li>昼出耘田夜绩麻，村庄儿女各当家。</li>
+          <li>童孙未解供耕织，也傍桑阴学种瓜。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">晓出净慈寺送林子方</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">约 1186–1190 年</span>
+          <span class="poem-meta">杨万里</span>
+        </div>
+        <ul class="poem-lines">
+          <li>毕竟西湖六月中，风光不与四时同。</li>
+          <li>接天莲叶无穷碧，映日荷花别样红。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="宋">
+        <div class="poem-header">
+          <span class="poem-title">示儿</span>
+          <span class="dynasty">宋</span>
+          <span class="poem-year">公元 1210 年</span>
+          <span class="poem-meta">陆游</span>
+        </div>
+        <ul class="poem-lines">
+          <li>死去元知万事空，但悲不见九州同。</li>
+          <li>王师北定中原日，家祭无忘告乃翁。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="元">
+        <div class="poem-header">
+          <span class="poem-title">天净沙·秋思</span>
+          <span class="dynasty">元</span>
+          <span class="poem-year">约 1290–1300 年代</span>
+          <span class="poem-meta">马致远</span>
+        </div>
+        <ul class="poem-lines">
+          <li>枯藤老树昏鸦，小桥流水人家，古道西风瘦马。</li>
+          <li>夕阳西下，断肠人在天涯。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="明">
+        <div class="poem-header">
+          <span class="poem-title">石灰吟</span>
+          <span class="dynasty">明</span>
+          <span class="poem-year">约 1410–1430 年代</span>
+          <span class="poem-meta">于谦</span>
+        </div>
+        <ul class="poem-lines">
+          <li>千锤万凿出深山，烈火焚烧若等闲。</li>
+          <li>粉骨碎身浑不怕，要留清白在人间。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="清">
+        <div class="poem-header">
+          <span class="poem-title">所见</span>
+          <span class="dynasty">清</span>
+          <span class="poem-year">约 1750–1780 年代</span>
+          <span class="poem-meta">袁枚</span>
+        </div>
+        <ul class="poem-lines">
+          <li>牧童骑黄牛，歌声振林樾。</li>
+          <li>意欲捕鸣蝉，忽然闭口立。</li>
+        </ul>
+      </article>
+
+      <article class="poem" data-dynasty="清">
+        <div class="poem-header">
+          <span class="poem-title">村居</span>
+          <span class="dynasty">清</span>
+          <span class="poem-year">约 1860–1880 年代</span>
+          <span class="poem-meta">高鼎</span>
+        </div>
+        <ul class="poem-lines">
+          <li>草长莺飞二月天，拂堤杨柳醉春烟。</li>
+          <li>儿童散学归来早，忙趁东风放纸鸢。</li>
+        </ul>
+      </article>
+
+    </div>
   </div>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('filterBar');
+      var poems = document.querySelectorAll('#poemList .poem');
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        var dynasty = btn.getAttribute('data-dynasty');
+        bar.querySelectorAll('button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        poems.forEach(function (poem) {
+          var show = dynasty === '全部' || poem.getAttribute('data-dynasty') === dynasty;
+          poem.style.display = show ? '' : 'none';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
