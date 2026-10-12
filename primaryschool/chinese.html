@@ -26,17 +26,18 @@
     }
     .back:hover { background: #fef0ec; }
     h1 { color: #c0392b; margin-bottom: 0.5rem; }
-    .intro {
-      color: #666;
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
+    .intro { color: #666; margin-bottom: 1.5rem; line-height: 1.7; }
+    .back, .content {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .content {
       background: #fff;
       border-radius: 16px;
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 900px;
+      width: 100%;
     }
     .section-title {
       font-size: 1.25rem;
@@ -46,87 +47,113 @@
       border-bottom: 2px solid #f5c6a5;
     }
     .section-title:first-of-type { margin-top: 0.5rem; }
-    .topics {
-      margin: 0 0 0 1.5rem;
-      line-height: 2;
-    }
-    .poem-list {
-      display: grid;
-      gap: 1.2rem;
-    }
-    .poem {
-      border: 1px solid #f0d4c0;
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      background: #fffaf6;
-      transition: box-shadow 0.2s ease;
-    }
-    .poem:hover {
-      box-shadow: 0 6px 18px rgba(192, 57, 43, 0.1);
-    }
-    .poem-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.5rem 1rem;
-      margin-bottom: 0.8rem;
-    }
-    .poem-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #c0392b;
-    }
-    .poem-meta {
-      font-size: 0.95rem;
-      color: #8a6a55;
-    }
-    .dynasty {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
-      border-radius: 6px;
-      background: #fde8d8;
-      color: #c0392b;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .poem-year {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
-      border-radius: 6px;
-      background: #eef4f8;
-      color: #5a6b7b;
-      font-size: 0.85rem;
-    }
+    .topics { margin: 0 0 0 1.5rem; line-height: 2; }
     .timeline-note {
       font-size: 0.9rem;
       color: #8a6a55;
-      margin: -0.4rem 0 1.2rem;
+      margin: -0.4rem 0 1rem;
       line-height: 1.6;
     }
-    .poem-lines {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      line-height: 2;
-      font-size: 1.05rem;
-      color: #3a3a3a;
-      letter-spacing: 0.04em;
+    .stat-line {
+      font-size: 0.9rem;
+      color: #8a6a55;
+      margin: -0.6rem 0 1rem;
     }
-    .poem-lines li { margin: 0; }
+
+    .axis-map {
+      margin: 0 0 1.4rem;
+      padding: 0.9rem 0.8rem 0.7rem;
+      background: #fffaf6;
+      border: 1px solid #f0d4c0;
+      border-radius: 12px;
+    }
+    .axis-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.82rem;
+      color: #6b5a4e;
+    }
+    .axis-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .swatch.pre { background: #7f8c8d; }
+    .swatch.tang { background: #e74c3c; }
+    .swatch.song { background: #e67e22; }
+    .swatch.yuan { background: #8e44ad; }
+    .swatch.ming { background: #2980b9; }
+    .swatch.qing { background: #16a085; }
+    .swatch.modern { background: #c0392b; }
+    .axis-track { position: relative; height: 92px; }
+    .axis-bands {
+      position: absolute;
+      left: 0; right: 0; bottom: 22px;
+      height: 10px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      background: #efe4d8;
+    }
+    .axis-bands .band { height: 100%; }
+    .axis-bands .pre { background: #95a5a6; }
+    .axis-bands .tang { background: #e74c3c; }
+    .axis-bands .gap { background: #efe4d8; }
+    .axis-bands .song { background: #e67e22; }
+    .axis-bands .yuan { background: #8e44ad; }
+    .axis-bands .ming { background: #2980b9; }
+    .axis-bands .qing { background: #16a085; }
+    .axis-bands .modern { background: #c0392b; }
+    .axis-dots { position: absolute; inset: 0 0 32px 0; }
+    .axis-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      transform: translateX(-50%);
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+      background: #e74c3c;
+    }
+    .axis-dot:hover { transform: translateX(-50%) scale(1.35); z-index: 2; }
+    .axis-dot.is-hidden { display: none; }
+    .axis-ticks {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 18px;
+      font-size: 0.72rem;
+      color: #8a6a55;
+    }
+    .axis-ticks span { position: absolute; transform: translateX(-50%); }
+    .axis-hint { margin-top: 0.45rem; font-size: 0.8rem; color: #a08070; }
+
+    .filter-group { margin-bottom: 0.8rem; }
+    .filter-label {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #8a6a55;
+      margin-bottom: 0.4rem;
+    }
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
+      justify-content: center;
+      gap: 0.45rem;
+      margin-bottom: 0.6rem;
     }
     .filter-bar button {
       border: 1px solid #f0d4c0;
       background: #fff;
       color: #8a6a55;
       border-radius: 20px;
-      padding: 0.35rem 0.9rem;
+      padding: 0.3rem 0.8rem;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-family: inherit;
     }
     .filter-bar button.active,
@@ -135,10 +162,139 @@
       border-color: #e74c3c;
       color: #fff;
     }
+
+    .poem-list {
+      position: relative;
+      padding: 0.4rem 0 0.2rem;
+    }
+    .poem-list::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #f0d4c0;
+      transform: translateX(-50%);
+    }
+    .era { position: relative; }
+    .era-label {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      max-width: calc(50% - 28px);
+      margin: 0.5rem auto 0.9rem;
+      padding: 0.25rem 0.8rem;
+      text-align: center;
+      font-weight: 700;
+      color: #c0392b;
+      font-size: 1rem;
+      background: #fff;
+      border: 1px solid #f0d4c0;
+      border-radius: 999px;
+    }
+
+    .poem {
+      position: relative;
+      width: calc(50% - 28px);
+      border: 1px solid #f0d4c0;
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      background: #fffaf6;
+      margin-bottom: 0.5rem;
+      scroll-margin-top: 1rem;
+      transition: box-shadow 0.2s ease;
+    }
+    .poem.side-left { margin-right: calc(50% + 28px); }
+    .poem.side-right {
+      margin-left: calc(50% + 28px);
+      margin-top: -0.3rem;
+    }
+    .poem:hover { box-shadow: 0 6px 18px rgba(192, 57, 43, 0.1); }
+    .poem::before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      width: 12px;
+      height: 12px;
+      background: #e74c3c;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px #f0d4c0;
+    }
+    .poem::after {
+      content: "";
+      position: absolute;
+      top: 27px;
+      width: 22px;
+      height: 2px;
+      background: #f0d4c0;
+    }
+    .poem.side-left::before { right: -34px; }
+    .poem.side-left::after { right: -22px; }
+    .poem.side-right::before { left: -34px; }
+    .poem.side-right::after { left: -22px; }
+    .poem.is-flash {
+      outline: 2px solid #e74c3c;
+      background: #fff3ea;
+    }
+    .poem-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 0.7rem;
+      margin-bottom: 0.65rem;
+    }
+    .poem-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #c0392b;
+    }
+    .poem-meta { font-size: 0.9rem; color: #8a6a55; }
+    .tag {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .dynasty { background: #fde8d8; color: #c0392b; }
+    .poem-year { background: #eef4f8; color: #5a6b7b; font-weight: 500; }
+    .poem-grade { background: #e8f6ef; color: #1e8449; }
+    .poem-lines {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      line-height: 1.9;
+      font-size: 1.02rem;
+      color: #3a3a3a;
+      letter-spacing: 0.03em;
+    }
+    .empty-tip {
+      text-align: center;
+      color: #a08070;
+      padding: 1.5rem;
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .poem-list::before { left: 12px; transform: none; }
+      .era-label { max-width: none; margin-left: 2rem; margin-right: 0; }
+      .poem, .poem.side-left, .poem.side-right {
+        width: auto;
+        margin-left: 2rem;
+        margin-right: 0;
+        margin-top: 0;
+      }
+      .poem.side-left::before,
+      .poem.side-right::before { left: -29px; right: auto; }
+      .poem.side-left::after,
+      .poem.side-right::after { left: -16px; right: auto; }
+    }
     @media (max-width: 600px) {
       body { padding: 1rem; }
       .content { padding: 1.2rem; }
-      .poem { padding: 1rem; }
+      .poem { padding: 0.9rem; }
     }
   </style>
 </head>
@@ -146,7 +302,7 @@
   <a class="back" href="index.html">← 返回主页</a>
   <div class="content">
     <h1>📖 语文</h1>
-    <p class="intro">欢迎来到语文学习页面。下方整理了小学常见必背古诗，包含朝代、大致创作年份、诗名、作者与全文语句，并按时间线从早到晚排列，方便背诵与复习。</p>
+    <p class="intro">欢迎来到语文学习页面。下方按部编版小学语文教材整理古诗词，标注年级与上下册，并按大致创作时间排列在时间线上。</p>
 
     <h2 class="section-title">学习内容</h2>
     <ul class="topics">
@@ -156,459 +312,363 @@
       <li>作文与写作技巧</li>
     </ul>
 
-    <h2 class="section-title">小学古诗（按时间线）</h2>
-    <p class="timeline-note">下列年份多为学界常见考证或通行说法，部分篇目仅能确定大致区间；年份愈早愈靠前。</p>
-    <div class="filter-bar" id="filterBar">
-      <button type="button" class="active" data-dynasty="全部">全部</button>
-      <button type="button" data-dynasty="唐">唐</button>
-      <button type="button" data-dynasty="宋">宋</button>
-      <button type="button" data-dynasty="元">元</button>
-      <button type="button" data-dynasty="明">明</button>
-      <button type="button" data-dynasty="清">清</button>
+    <h2 class="section-title">古诗时间线</h2>
+    <p class="timeline-note">依据统编（部编）版小学语文教材课文与“日积月累”篇目整理；年份多为通行考证。竖轴居中，按首左右交替。不含文言文。</p>
+    <p class="stat-line" id="statLine">共收录 0 首</p>
+
+    <div class="axis-map">
+      <div class="axis-legend">
+        <span><i class="swatch pre"></i>先秦—南北朝</span>
+        <span><i class="swatch tang"></i>唐</span>
+        <span><i class="swatch song"></i>宋</span>
+        <span><i class="swatch yuan"></i>元</span>
+        <span><i class="swatch ming"></i>明</span>
+        <span><i class="swatch qing"></i>清</span>
+        <span><i class="swatch modern"></i>近现代</span>
+      </div>
+      <div class="axis-track">
+        <div class="axis-dots" id="axisDots"></div>
+        <div class="axis-bands" aria-hidden="true">
+          <div class="band pre" style="width:30.9%"></div>
+          <div class="band tang" style="width:14.45%"></div>
+          <div class="band gap" style="width:2.65%"></div>
+          <div class="band song" style="width:15.95%"></div>
+          <div class="band yuan" style="width:4.85%"></div>
+          <div class="band ming" style="width:13.8%"></div>
+          <div class="band qing" style="width:13.4%"></div>
+          <div class="band modern" style="width:4%"></div>
+        </div>
+        <div class="axis-ticks">
+          <span style="left:0%">0</span>
+          <span style="left:25%">500</span>
+          <span style="left:50%">1000</span>
+          <span style="left:75%">1500</span>
+          <span style="left:100%">2000</span>
+        </div>
+      </div>
+      <p class="axis-hint">色带按公元 0–2000 年比例绘制。点击圆点可跳到对应古诗。</p>
     </div>
 
-    <div class="poem-list" id="poemList">
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">咏鹅</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约公元 626 年</span>
-          <span class="poem-meta">骆宾王</span>
-        </div>
-        <ul class="poem-lines">
-          <li>鹅，鹅，鹅，曲项向天歌。</li>
-          <li>白毛浮绿水，红掌拨清波。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">风</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 680–700 年</span>
-          <span class="poem-meta">李峤</span>
-        </div>
-        <ul class="poem-lines">
-          <li>解落三秋叶，能开二月花。</li>
-          <li>过江千尺浪，入竹万竿斜。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">望庐山瀑布</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 725 年</span>
-          <span class="poem-meta">李白</span>
-        </div>
-        <ul class="poem-lines">
-          <li>日照香炉生紫烟，遥看瀑布挂前川。</li>
-          <li>飞流直下三千尺，疑是银河落九天。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">静夜思</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 726 年</span>
-          <span class="poem-meta">李白</span>
-        </div>
-        <ul class="poem-lines">
-          <li>床前明月光，疑是地上霜。</li>
-          <li>举头望明月，低头思故乡。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">古朗月行（节选）</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 720–740 年</span>
-          <span class="poem-meta">李白</span>
-        </div>
-        <ul class="poem-lines">
-          <li>小时不识月，呼作白玉盘。</li>
-          <li>又疑瑶台镜，飞在青云端。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">春晓</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 720–740 年</span>
-          <span class="poem-meta">孟浩然</span>
-        </div>
-        <ul class="poem-lines">
-          <li>春眠不觉晓，处处闻啼鸟。</li>
-          <li>夜来风雨声，花落知多少。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">登鹳雀楼</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 734 年</span>
-          <span class="poem-meta">王之涣</span>
-        </div>
-        <ul class="poem-lines">
-          <li>白日依山尽，黄河入海流。</li>
-          <li>欲穷千里目，更上一层楼。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">赠汪伦</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 755 年</span>
-          <span class="poem-meta">李白</span>
-        </div>
-        <ul class="poem-lines">
-          <li>李白乘舟将欲行，忽闻岸上踏歌声。</li>
-          <li>桃花潭水深千尺，不及汪伦送我情。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">枫桥夜泊</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 756 年</span>
-          <span class="poem-meta">张继</span>
-        </div>
-        <ul class="poem-lines">
-          <li>月落乌啼霜满天，江枫渔火对愁眠。</li>
-          <li>姑苏城外寒山寺，夜半钟声到客船。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">早发白帝城</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">公元 759 年</span>
-          <span class="poem-meta">李白</span>
-        </div>
-        <ul class="poem-lines">
-          <li>朝辞白帝彩云间，千里江陵一日还。</li>
-          <li>两岸猿声啼不住，轻舟已过万重山。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">春夜喜雨</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">公元 761 年</span>
-          <span class="poem-meta">杜甫</span>
-        </div>
-        <ul class="poem-lines">
-          <li>好雨知时节，当春乃发生。</li>
-          <li>随风潜入夜，润物细无声。</li>
-          <li>野径云俱黑，江船火独明。</li>
-          <li>晓看红湿处，花重锦官城。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">绝句</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">公元 764 年</span>
-          <span class="poem-meta">杜甫</span>
-        </div>
-        <ul class="poem-lines">
-          <li>两个黄鹂鸣翠柳，一行白鹭上青天。</li>
-          <li>窗含西岭千秋雪，门泊东吴万里船。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">赋得古原草送别</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 787 年</span>
-          <span class="poem-meta">白居易</span>
-        </div>
-        <ul class="poem-lines">
-          <li>离离原上草，一岁一枯荣。</li>
-          <li>野火烧不尽，春风吹又生。</li>
-          <li>远芳侵古道，晴翠接荒城。</li>
-          <li>又送王孙去，萋萋满别情。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">游子吟</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 791 年</span>
-          <span class="poem-meta">孟郊</span>
-        </div>
-        <ul class="poem-lines">
-          <li>慈母手中线，游子身上衣。</li>
-          <li>临行密密缝，意恐迟迟归。</li>
-          <li>谁言寸草心，报得三春晖。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">悯农（其一）</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 793–810 年</span>
-          <span class="poem-meta">李绅</span>
-        </div>
-        <ul class="poem-lines">
-          <li>锄禾日当午，汗滴禾下土。</li>
-          <li>谁知盘中餐，粒粒皆辛苦。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">江雪</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 805–815 年</span>
-          <span class="poem-meta">柳宗元</span>
-        </div>
-        <ul class="poem-lines">
-          <li>千山鸟飞绝，万径人踪灭。</li>
-          <li>孤舟蓑笠翁，独钓寒江雪。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">寻隐者不遇</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 810–830 年</span>
-          <span class="poem-meta">贾岛</span>
-        </div>
-        <ul class="poem-lines">
-          <li>松下问童子，言师采药去。</li>
-          <li>只在此山中，云深不知处。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="唐">
-        <div class="poem-header">
-          <span class="poem-title">池上</span>
-          <span class="dynasty">唐</span>
-          <span class="poem-year">约 835–845 年</span>
-          <span class="poem-meta">白居易</span>
-        </div>
-        <ul class="poem-lines">
-          <li>小娃撑小艇，偷采白莲回。</li>
-          <li>不解藏踪迹，浮萍一道开。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">梅花</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1060–1070 年代</span>
-          <span class="poem-meta">王安石</span>
-        </div>
-        <ul class="poem-lines">
-          <li>墙角数枝梅，凌寒独自开。</li>
-          <li>遥知不是雪，为有暗香来。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">元日</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1069 年</span>
-          <span class="poem-meta">王安石</span>
-        </div>
-        <ul class="poem-lines">
-          <li>爆竹声中一岁除，春风送暖入屠苏。</li>
-          <li>千门万户曈曈日，总把新桃换旧符。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">饮湖上初晴后雨</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">公元 1073 年</span>
-          <span class="poem-meta">苏轼</span>
-        </div>
-        <ul class="poem-lines">
-          <li>水光潋滟晴方好，山色空蒙雨亦奇。</li>
-          <li>欲把西湖比西子，淡妆浓抹总相宜。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">泊船瓜洲</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1075 年</span>
-          <span class="poem-meta">王安石</span>
-        </div>
-        <ul class="poem-lines">
-          <li>京口瓜洲一水间，钟山只隔数重山。</li>
-          <li>春风又绿江南岸，明月何时照我还。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">题西林壁</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">公元 1084 年</span>
-          <span class="poem-meta">苏轼</span>
-        </div>
-        <ul class="poem-lines">
-          <li>横看成岭侧成峰，远近高低各不同。</li>
-          <li>不识庐山真面目，只缘身在此山中。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">惠崇春江晚景</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">公元 1085 年</span>
-          <span class="poem-meta">苏轼</span>
-        </div>
-        <ul class="poem-lines">
-          <li>竹外桃花三两枝，春江水暖鸭先知。</li>
-          <li>蒌蒿满地芦芽短，正是河豚欲上时。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">小池</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1170–1180 年代</span>
-          <span class="poem-meta">杨万里</span>
-        </div>
-        <ul class="poem-lines">
-          <li>泉眼无声惜细流，树阴照水爱晴柔。</li>
-          <li>小荷才露尖尖角，早有蜻蜓立上头。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">四时田园杂兴（其一）</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1186 年</span>
-          <span class="poem-meta">范成大</span>
-        </div>
-        <ul class="poem-lines">
-          <li>昼出耘田夜绩麻，村庄儿女各当家。</li>
-          <li>童孙未解供耕织，也傍桑阴学种瓜。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">晓出净慈寺送林子方</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">约 1186–1190 年</span>
-          <span class="poem-meta">杨万里</span>
-        </div>
-        <ul class="poem-lines">
-          <li>毕竟西湖六月中，风光不与四时同。</li>
-          <li>接天莲叶无穷碧，映日荷花别样红。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="宋">
-        <div class="poem-header">
-          <span class="poem-title">示儿</span>
-          <span class="dynasty">宋</span>
-          <span class="poem-year">公元 1210 年</span>
-          <span class="poem-meta">陆游</span>
-        </div>
-        <ul class="poem-lines">
-          <li>死去元知万事空，但悲不见九州同。</li>
-          <li>王师北定中原日，家祭无忘告乃翁。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="元">
-        <div class="poem-header">
-          <span class="poem-title">天净沙·秋思</span>
-          <span class="dynasty">元</span>
-          <span class="poem-year">约 1290–1300 年代</span>
-          <span class="poem-meta">马致远</span>
-        </div>
-        <ul class="poem-lines">
-          <li>枯藤老树昏鸦，小桥流水人家，古道西风瘦马。</li>
-          <li>夕阳西下，断肠人在天涯。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="明">
-        <div class="poem-header">
-          <span class="poem-title">石灰吟</span>
-          <span class="dynasty">明</span>
-          <span class="poem-year">约 1410–1430 年代</span>
-          <span class="poem-meta">于谦</span>
-        </div>
-        <ul class="poem-lines">
-          <li>千锤万凿出深山，烈火焚烧若等闲。</li>
-          <li>粉骨碎身浑不怕，要留清白在人间。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="清">
-        <div class="poem-header">
-          <span class="poem-title">所见</span>
-          <span class="dynasty">清</span>
-          <span class="poem-year">约 1750–1780 年代</span>
-          <span class="poem-meta">袁枚</span>
-        </div>
-        <ul class="poem-lines">
-          <li>牧童骑黄牛，歌声振林樾。</li>
-          <li>意欲捕鸣蝉，忽然闭口立。</li>
-        </ul>
-      </article>
-
-      <article class="poem" data-dynasty="清">
-        <div class="poem-header">
-          <span class="poem-title">村居</span>
-          <span class="dynasty">清</span>
-          <span class="poem-year">约 1860–1880 年代</span>
-          <span class="poem-meta">高鼎</span>
-        </div>
-        <ul class="poem-lines">
-          <li>草长莺飞二月天，拂堤杨柳醉春烟。</li>
-          <li>儿童散学归来早，忙趁东风放纸鸢。</li>
-        </ul>
-      </article>
-
+    <div class="filter-group">
+      <div class="filter-label">按朝代</div>
+      <div class="filter-bar" id="dynastyBar">
+        <button type="button" class="active" data-value="全部">全部</button>
+        <button type="button" data-value="汉">汉</button>
+        <button type="button" data-value="南北朝">南北朝</button>
+        <button type="button" data-value="唐">唐</button>
+        <button type="button" data-value="宋">宋</button>
+        <button type="button" data-value="元">元</button>
+        <button type="button" data-value="明">明</button>
+        <button type="button" data-value="清">清</button>
+        <button type="button" data-value="现代">现代</button>
+      </div>
+      <div class="filter-label">按年级</div>
+      <div class="filter-bar" id="gradeBar">
+        <button type="button" class="active" data-value="全部">全部</button>
+        <button type="button" data-value="1">一年级</button>
+        <button type="button" data-value="2">二年级</button>
+        <button type="button" data-value="3">三年级</button>
+        <button type="button" data-value="4">四年级</button>
+        <button type="button" data-value="5">五年级</button>
+        <button type="button" data-value="6">六年级</button>
+      </div>
+      <div class="filter-label">按册次</div>
+      <div class="filter-bar" id="semesterBar">
+        <button type="button" class="active" data-value="全部">全部</button>
+        <button type="button" data-value="上">上册</button>
+        <button type="button" data-value="下">下册</button>
+      </div>
     </div>
+
+    <div class="poem-list" id="poemList"></div>
+    <p class="empty-tip" id="emptyTip">当前筛选条件下没有古诗。</p>
   </div>
 
   <script>
     (function () {
-      var bar = document.getElementById('filterBar');
-      var poems = document.querySelectorAll('#poemList .poem');
-      bar.addEventListener('click', function (e) {
-        var btn = e.target.closest('button');
-        if (!btn) return;
-        var dynasty = btn.getAttribute('data-dynasty');
-        bar.querySelectorAll('button').forEach(function (b) {
-          b.classList.toggle('active', b === btn);
-        });
-        poems.forEach(function (poem) {
-          var show = dynasty === '全部' || poem.getAttribute('data-dynasty') === dynasty;
-          poem.style.display = show ? '' : 'none';
-        });
+      var AXIS_START = 0;
+      var AXIS_END = 2000;
+      var GRADE_CN = ['', '一', '二', '三', '四', '五', '六'];
+      var ERA_RANGE = {
+        '先秦': '约前11世纪—前221年',
+        '汉': '前206—220年',
+        '南北朝': '420—589年',
+        '唐': '618—907年',
+        '宋': '960—1279年',
+        '元': '1271—1368年',
+        '明': '1368—1644年',
+        '清': '1644—1912年',
+        '现代': '1912年以后'
+      };
+      var DOT_COLOR = {
+        '先秦': '#7f8c8d', '汉': '#95a5a6', '南北朝': '#7f8c8d',
+        '唐': '#e74c3c', '宋': '#e67e22', '元': '#8e44ad',
+        '明': '#2980b9', '清': '#16a085', '现代': '#c0392b'
+      };
+
+      // 部编版小学语文古诗词（课文+日积月累），不含文言文
+      var POEMS = [
+        // 一年级上
+        { title: '咏鹅', dynasty: '唐', author: '骆宾王', year: 626, yearLabel: '约公元 626 年', grade: 1, semester: '上', lines: ['鹅，鹅，鹅，曲项向天歌。', '白毛浮绿水，红掌拨清波。'] },
+        { title: '江南', dynasty: '汉', author: '汉乐府', year: 100, yearLabel: '约东汉年间', grade: 1, semester: '上', lines: ['江南可采莲，莲叶何田田。鱼戏莲叶间。', '鱼戏莲叶东，鱼戏莲叶西，鱼戏莲叶南，鱼戏莲叶北。'] },
+        { title: '画', dynasty: '唐', author: '王维', year: 740, yearLabel: '约盛唐', grade: 1, semester: '上', lines: ['远看山有色，近听水无声。', '春去花还在，人来鸟不惊。'] },
+        { title: '悯农（其二）', dynasty: '唐', author: '李绅', year: 800, yearLabel: '约 793–810 年', grade: 1, semester: '上', lines: ['锄禾日当午，汗滴禾下土。', '谁知盘中餐，粒粒皆辛苦。'] },
+        { title: '古朗月行（节选）', dynasty: '唐', author: '李白', year: 730, yearLabel: '约 720–740 年', grade: 1, semester: '上', lines: ['小时不识月，呼作白玉盘。', '又疑瑶台镜，飞在青云端。'] },
+        { title: '风', dynasty: '唐', author: '李峤', year: 690, yearLabel: '约 680–700 年', grade: 1, semester: '上', lines: ['解落三秋叶，能开二月花。', '过江千尺浪，入竹万竿斜。'] },
+        // 一年级下
+        { title: '春晓', dynasty: '唐', author: '孟浩然', year: 730, yearLabel: '约 720–740 年', grade: 1, semester: '下', lines: ['春眠不觉晓，处处闻啼鸟。', '夜来风雨声，花落知多少。'] },
+        { title: '赠汪伦', dynasty: '唐', author: '李白', year: 755, yearLabel: '约 755 年', grade: 1, semester: '下', lines: ['李白乘舟将欲行，忽闻岸上踏歌声。', '桃花潭水深千尺，不及汪伦送我情。'] },
+        { title: '静夜思', dynasty: '唐', author: '李白', year: 726, yearLabel: '约 726 年', grade: 1, semester: '下', lines: ['床前明月光，疑是地上霜。', '举头望明月，低头思故乡。'] },
+        { title: '寻隐者不遇', dynasty: '唐', author: '贾岛', year: 820, yearLabel: '约 810–830 年', grade: 1, semester: '下', lines: ['松下问童子，言师采药去。', '只在此山中，云深不知处。'] },
+        { title: '池上', dynasty: '唐', author: '白居易', year: 840, yearLabel: '约 835–845 年', grade: 1, semester: '下', lines: ['小娃撑小艇，偷采白莲回。', '不解藏踪迹，浮萍一道开。'] },
+        { title: '小池', dynasty: '宋', author: '杨万里', year: 1175, yearLabel: '约 1170–1180 年代', grade: 1, semester: '下', lines: ['泉眼无声惜细流，树阴照水爱晴柔。', '小荷才露尖尖角，早有蜻蜓立上头。'] },
+        { title: '画鸡', dynasty: '明', author: '唐寅', year: 1505, yearLabel: '约明代中期', grade: 1, semester: '下', lines: ['头上红冠不用裁，满身雪白走将来。', '平生不敢轻言语，一叫千门万户开。'] },
+        // 二年级上
+        { title: '梅花', dynasty: '宋', author: '王安石', year: 1065, yearLabel: '约 1060–1070 年代', grade: 2, semester: '上', lines: ['墙角数枝梅，凌寒独自开。', '遥知不是雪，为有暗香来。'] },
+        { title: '小儿垂钓', dynasty: '唐', author: '胡令能', year: 780, yearLabel: '约中唐', grade: 2, semester: '上', lines: ['蓬头稚子学垂纶，侧坐莓苔草映身。', '路人借问遥招手，怕得鱼惊不应人。'] },
+        { title: '登鹳雀楼', dynasty: '唐', author: '王之涣', year: 734, yearLabel: '约 734 年', grade: 2, semester: '上', lines: ['白日依山尽，黄河入海流。', '欲穷千里目，更上一层楼。'] },
+        { title: '望庐山瀑布', dynasty: '唐', author: '李白', year: 725, yearLabel: '约 725 年', grade: 2, semester: '上', lines: ['日照香炉生紫烟，遥看瀑布挂前川。', '飞流直下三千尺，疑是银河落九天。'] },
+        { title: '夜宿山寺', dynasty: '唐', author: '李白', year: 725, yearLabel: '约盛唐', grade: 2, semester: '上', lines: ['危楼高百尺，手可摘星辰。', '不敢高声语，恐惊天上人。'] },
+        { title: '敕勒歌', dynasty: '南北朝', author: '北朝民歌', year: 500, yearLabel: '约北朝', grade: 2, semester: '上', lines: ['敕勒川，阴山下。天似穹庐，笼盖四野。', '天苍苍，野茫茫。风吹草低见牛羊。'] },
+        // 二年级下
+        { title: '村居', dynasty: '清', author: '高鼎', year: 1870, yearLabel: '约 1860–1880 年代', grade: 2, semester: '下', lines: ['草长莺飞二月天，拂堤杨柳醉春烟。', '儿童散学归来早，忙趁东风放纸鸢。'] },
+        { title: '咏柳', dynasty: '唐', author: '贺知章', year: 725, yearLabel: '约盛唐', grade: 2, semester: '下', lines: ['碧玉妆成一树高，万条垂下绿丝绦。', '不知细叶谁裁出，二月春风似剪刀。'] },
+        { title: '赋得古原草送别', dynasty: '唐', author: '白居易', year: 787, yearLabel: '约 787 年', grade: 2, semester: '下', lines: ['离离原上草，一岁一枯荣。', '野火烧不尽，春风吹又生。'] },
+        { title: '晓出净慈寺送林子方', dynasty: '宋', author: '杨万里', year: 1188, yearLabel: '约 1186–1190 年', grade: 2, semester: '下', lines: ['毕竟西湖六月中，风光不与四时同。', '接天莲叶无穷碧，映日荷花别样红。'] },
+        { title: '绝句', dynasty: '唐', author: '杜甫', year: 764, yearLabel: '公元 764 年', grade: 2, semester: '下', lines: ['两个黄鹂鸣翠柳，一行白鹭上青天。', '窗含西岭千秋雪，门泊东吴万里船。'] },
+        { title: '悯农（其一）', dynasty: '唐', author: '李绅', year: 799, yearLabel: '约 793–810 年', grade: 2, semester: '下', lines: ['春种一粒粟，秋收万颗子。', '四海无闲田，农夫犹饿死。'] },
+        { title: '舟夜书所见', dynasty: '清', author: '查慎行', year: 1690, yearLabel: '约清康熙年间', grade: 2, semester: '下', lines: ['月黑见渔灯，孤光一点萤。', '微微风簇浪，散作满河星。'] },
+        // 三年级上
+        { title: '所见', dynasty: '清', author: '袁枚', year: 1765, yearLabel: '约 1750–1780 年代', grade: 3, semester: '上', lines: ['牧童骑黄牛，歌声振林樾。', '意欲捕鸣蝉，忽然闭口立。'] },
+        { title: '山行', dynasty: '唐', author: '杜牧', year: 850, yearLabel: '约晚唐', grade: 3, semester: '上', lines: ['远上寒山石径斜，白云生处有人家。', '停车坐爱枫林晚，霜叶红于二月花。'] },
+        { title: '赠刘景文', dynasty: '宋', author: '苏轼', year: 1090, yearLabel: '约 1090 年', grade: 3, semester: '上', lines: ['荷尽已无擎雨盖，菊残犹有傲霜枝。', '一年好景君须记，最是橙黄橘绿时。'] },
+        { title: '夜书所见', dynasty: '宋', author: '叶绍翁', year: 1220, yearLabel: '约南宋', grade: 3, semester: '上', lines: ['萧萧梧叶送寒声，江上秋风动客情。', '知有儿童挑促织，夜深篱落一灯明。'] },
+        { title: '望天门山', dynasty: '唐', author: '李白', year: 725, yearLabel: '约 725 年', grade: 3, semester: '上', lines: ['天门中断楚江开，碧水东流至此回。', '两岸青山相对出，孤帆一片日边来。'] },
+        { title: '饮湖上初晴后雨', dynasty: '宋', author: '苏轼', year: 1073, yearLabel: '公元 1073 年', grade: 3, semester: '上', lines: ['水光潋滟晴方好，山色空蒙雨亦奇。', '欲把西湖比西子，淡妆浓抹总相宜。'] },
+        { title: '望洞庭', dynasty: '唐', author: '刘禹锡', year: 820, yearLabel: '约中唐', grade: 3, semester: '上', lines: ['湖光秋月两相和，潭面无风镜未磨。', '遥望洞庭山水翠，白银盘里一青螺。'] },
+        { title: '早发白帝城', dynasty: '唐', author: '李白', year: 759, yearLabel: '公元 759 年', grade: 3, semester: '上', lines: ['朝辞白帝彩云间，千里江陵一日还。', '两岸猿声啼不住，轻舟已过万重山。'] },
+        { title: '采莲曲', dynasty: '唐', author: '王昌龄', year: 740, yearLabel: '约盛唐', grade: 3, semester: '上', lines: ['荷叶罗裙一色裁，芙蓉向脸两边开。', '乱入池中看不见，闻歌始觉有人来。'] },
+        // 三年级下
+        { title: '绝句·迟日江山丽', dynasty: '唐', author: '杜甫', year: 761, yearLabel: '约 761 年', grade: 3, semester: '下', lines: ['迟日江山丽，春风花草香。', '泥融飞燕子，沙暖睡鸳鸯。'] },
+        { title: '惠崇春江晚景', dynasty: '宋', author: '苏轼', year: 1085, yearLabel: '公元 1085 年', grade: 3, semester: '下', lines: ['竹外桃花三两枝，春江水暖鸭先知。', '蒌蒿满地芦芽短，正是河豚欲上时。'] },
+        { title: '三衢道中', dynasty: '宋', author: '曾几', year: 1140, yearLabel: '约南宋初', grade: 3, semester: '下', lines: ['梅子黄时日日晴，小溪泛尽却山行。', '绿阴不减来时路，添得黄鹂四五声。'] },
+        { title: '忆江南', dynasty: '唐', author: '白居易', year: 838, yearLabel: '约 838 年', grade: 3, semester: '下', lines: ['江南好，风景旧曾谙。', '日出江花红胜火，春来江水绿如蓝。', '能不忆江南？'] },
+        { title: '元日', dynasty: '宋', author: '王安石', year: 1069, yearLabel: '约 1069 年', grade: 3, semester: '下', lines: ['爆竹声中一岁除，春风送暖入屠苏。', '千门万户曈曈日，总把新桃换旧符。'] },
+        { title: '清明', dynasty: '唐', author: '杜牧', year: 850, yearLabel: '约晚唐', grade: 3, semester: '下', lines: ['清明时节雨纷纷，路上行人欲断魂。', '借问酒家何处有？牧童遥指杏花村。'] },
+        { title: '九月九日忆山东兄弟', dynasty: '唐', author: '王维', year: 732, yearLabel: '约 732 年', grade: 3, semester: '下', lines: ['独在异乡为异客，每逢佳节倍思亲。', '遥知兄弟登高处，遍插茱萸少一人。'] },
+        { title: '滁州西涧', dynasty: '唐', author: '韦应物', year: 781, yearLabel: '约 781 年', grade: 3, semester: '下', lines: ['独怜幽草涧边生，上有黄鹂深树鸣。', '春潮带雨晚来急，野渡无人舟自横。'] },
+        { title: '大林寺桃花', dynasty: '唐', author: '白居易', year: 817, yearLabel: '约 817 年', grade: 3, semester: '下', lines: ['人间四月芳菲尽，山寺桃花始盛开。', '长恨春归无觅处，不知转入此中来。'] },
+        // 四年级上
+        { title: '鹿柴', dynasty: '唐', author: '王维', year: 750, yearLabel: '约盛唐', grade: 4, semester: '上', lines: ['空山不见人，但闻人语响。', '返景入深林，复照青苔上。'] },
+        { title: '暮江吟', dynasty: '唐', author: '白居易', year: 822, yearLabel: '约 822 年', grade: 4, semester: '上', lines: ['一道残阳铺水中，半江瑟瑟半江红。', '可怜九月初三夜，露似真珠月似弓。'] },
+        { title: '题西林壁', dynasty: '宋', author: '苏轼', year: 1084, yearLabel: '公元 1084 年', grade: 4, semester: '上', lines: ['横看成岭侧成峰，远近高低各不同。', '不识庐山真面目，只缘身在此山中。'] },
+        { title: '雪梅', dynasty: '宋', author: '卢梅坡', year: 1250, yearLabel: '约南宋', grade: 4, semester: '上', lines: ['梅雪争春未肯降，骚人搁笔费评章。', '梅须逊雪三分白，雪却输梅一段香。'] },
+        { title: '嫦娥', dynasty: '唐', author: '李商隐', year: 850, yearLabel: '约晚唐', grade: 4, semester: '上', lines: ['云母屏风烛影深，长河渐落晓星沉。', '嫦娥应悔偷灵药，碧海青天夜夜心。'] },
+        { title: '出塞', dynasty: '唐', author: '王昌龄', year: 740, yearLabel: '约盛唐', grade: 4, semester: '上', lines: ['秦时明月汉时关，万里长征人未还。', '但使龙城飞将在，不教胡马度阴山。'] },
+        { title: '凉州词', dynasty: '唐', author: '王翰', year: 720, yearLabel: '约盛唐', grade: 4, semester: '上', lines: ['葡萄美酒夜光杯，欲饮琵琶马上催。', '醉卧沙场君莫笑，古来征战几人回？'] },
+        { title: '夏日绝句', dynasty: '宋', author: '李清照', year: 1127, yearLabel: '约 1127 年前后', grade: 4, semester: '上', lines: ['生当作人杰，死亦为鬼雄。', '至今思项羽，不肯过江东。'] },
+        { title: '别董大', dynasty: '唐', author: '高适', year: 747, yearLabel: '约 747 年', grade: 4, semester: '上', lines: ['千里黄云白日曛，北风吹雁雪纷纷。', '莫愁前路无知己，天下谁人不识君？'] },
+        // 四年级下
+        { title: '宿新市徐公店', dynasty: '宋', author: '杨万里', year: 1180, yearLabel: '约南宋', grade: 4, semester: '下', lines: ['篱落疏疏一径深，树头花落未成阴。', '儿童急走追黄蝶，飞入菜花无处寻。'] },
+        { title: '四时田园杂兴（其二十五）', dynasty: '宋', author: '范成大', year: 1186, yearLabel: '约 1186 年', grade: 4, semester: '下', lines: ['昼出耘田夜绩麻，村庄儿女各当家。', '童孙未解供耕织，也傍桑阴学种瓜。'] },
+        { title: '清平乐·村居', dynasty: '宋', author: '辛弃疾', year: 1187, yearLabel: '约南宋', grade: 4, semester: '下', lines: ['茅檐低小，溪上青青草。', '醉里吴音相媚好，白发谁家翁媪？', '大儿锄豆溪东，中儿正织鸡笼。', '最喜小儿亡赖，溪头卧剥莲蓬。'] },
+        { title: '卜算子·咏梅', dynasty: '现代', author: '毛泽东', year: 1961, yearLabel: '公元 1961 年', grade: 4, semester: '下', lines: ['风雨送春归，飞雪迎春到。', '已是悬崖百丈冰，犹有花枝俏。', '俏也不争春，只把春来报。', '待到山花烂漫时，她在丛中笑。'] },
+        { title: '江畔独步寻花', dynasty: '唐', author: '杜甫', year: 761, yearLabel: '约 761 年', grade: 4, semester: '下', lines: ['黄四娘家花满蹊，千朵万朵压枝低。', '留连戏蝶时时舞，自在娇莺恰恰啼。'] },
+        { title: '蜂', dynasty: '唐', author: '罗隐', year: 880, yearLabel: '约晚唐', grade: 4, semester: '下', lines: ['不论平地与山尖，无限风光尽被占。', '采得百花成蜜后，为谁辛苦为谁甜？'] },
+        { title: '独坐敬亭山', dynasty: '唐', author: '李白', year: 753, yearLabel: '约 753 年', grade: 4, semester: '下', lines: ['众鸟高飞尽，孤云独去闲。', '相看两不厌，只有敬亭山。'] },
+        { title: '芙蓉楼送辛渐', dynasty: '唐', author: '王昌龄', year: 748, yearLabel: '约 748 年', grade: 4, semester: '下', lines: ['寒雨连江夜入吴，平明送客楚山孤。', '洛阳亲友如相问，一片冰心在玉壶。'] },
+        { title: '塞下曲', dynasty: '唐', author: '卢纶', year: 780, yearLabel: '约中唐', grade: 4, semester: '下', lines: ['月黑雁飞高，单于夜遁逃。', '欲将轻骑逐，大雪满弓刀。'] },
+        { title: '墨梅', dynasty: '元', author: '王冕', year: 1335, yearLabel: '约元代', grade: 4, semester: '下', lines: ['我家洗砚池头树，朵朵花开淡墨痕。', '不要人夸好颜色，只留清气满乾坤。'] },
+        // 五年级上
+        { title: '乞巧', dynasty: '唐', author: '林杰', year: 860, yearLabel: '约晚唐', grade: 5, semester: '上', lines: ['七夕今宵看碧霄，牵牛织女渡河桥。', '家家乞巧望秋月，穿尽红丝几万条。'] },
+        { title: '示儿', dynasty: '宋', author: '陆游', year: 1210, yearLabel: '公元 1210 年', grade: 5, semester: '上', lines: ['死去元知万事空，但悲不见九州同。', '王师北定中原日，家祭无忘告乃翁。'] },
+        { title: '题临安邸', dynasty: '宋', author: '林升', year: 1170, yearLabel: '约南宋', grade: 5, semester: '上', lines: ['山外青山楼外楼，西湖歌舞几时休？', '暖风熏得游人醉，直把杭州作汴州。'] },
+        { title: '己亥杂诗', dynasty: '清', author: '龚自珍', year: 1839, yearLabel: '公元 1839 年', grade: 5, semester: '上', lines: ['九州生气恃风雷，万马齐喑究可哀。', '我劝天公重抖擞，不拘一格降人才。'] },
+        { title: '山居秋暝', dynasty: '唐', author: '王维', year: 740, yearLabel: '约盛唐', grade: 5, semester: '上', lines: ['空山新雨后，天气晚来秋。', '明月松间照，清泉石上流。', '竹喧归浣女，莲动下渔舟。', '随意春芳歇，王孙自可留。'] },
+        { title: '枫桥夜泊', dynasty: '唐', author: '张继', year: 756, yearLabel: '约 756 年', grade: 5, semester: '上', lines: ['月落乌啼霜满天，江枫渔火对愁眠。', '姑苏城外寒山寺，夜半钟声到客船。'] },
+        { title: '长相思', dynasty: '清', author: '纳兰性德', year: 1682, yearLabel: '约 1682 年', grade: 5, semester: '上', lines: ['山一程，水一程，身向榆关那畔行，夜深千帐灯。', '风一更，雪一更，聒碎乡心梦不成，故园无此声。'] },
+        { title: '渔歌子', dynasty: '唐', author: '张志和', year: 774, yearLabel: '约 774 年', grade: 5, semester: '上', lines: ['西塞山前白鹭飞，桃花流水鳜鱼肥。', '青箬笠，绿蓑衣，斜风细雨不须归。'] },
+        { title: '观书有感（其一）', dynasty: '宋', author: '朱熹', year: 1170, yearLabel: '约南宋', grade: 5, semester: '上', lines: ['半亩方塘一鉴开，天光云影共徘徊。', '问渠那得清如许？为有源头活水来。'] },
+        { title: '观书有感（其二）', dynasty: '宋', author: '朱熹', year: 1175, yearLabel: '约南宋', grade: 5, semester: '上', lines: ['昨夜江边春水生，蒙冲巨舰一毛轻。', '向来枉费推移力，此日中流自在行。'] },
+        // 五年级下
+        { title: '四时田园杂兴（其三十一）', dynasty: '宋', author: '范成大', year: 1186, yearLabel: '约 1186 年', grade: 5, semester: '下', lines: ['梅子金黄杏子肥，麦花雪白菜花稀。', '日长篱落无人过，惟有蜻蜓蛱蝶飞。'] },
+        { title: '稚子弄冰', dynasty: '宋', author: '杨万里', year: 1180, yearLabel: '约南宋', grade: 5, semester: '下', lines: ['稚子金盆脱晓冰，彩丝穿取当银钲。', '敲成玉磬穿林响，忽作玻璃碎地声。'] },
+        { title: '村晚', dynasty: '宋', author: '雷震', year: 1200, yearLabel: '约南宋', grade: 5, semester: '下', lines: ['草满池塘水满陂，山衔落日浸寒漪。', '牧童归去横牛背，短笛无腔信口吹。'] },
+        { title: '鸟鸣涧', dynasty: '唐', author: '王维', year: 730, yearLabel: '约盛唐', grade: 5, semester: '下', lines: ['人闲桂花落，夜静春山空。', '月出惊山鸟，时鸣春涧中。'] },
+        { title: '从军行', dynasty: '唐', author: '王昌龄', year: 740, yearLabel: '约盛唐', grade: 5, semester: '下', lines: ['青海长云暗雪山，孤城遥望玉门关。', '黄沙百战穿金甲，不破楼兰终不还。'] },
+        { title: '秋夜将晓出篱门迎凉有感', dynasty: '宋', author: '陆游', year: 1192, yearLabel: '约 1192 年', grade: 5, semester: '下', lines: ['三万里河东入海，五千仞岳上摩天。', '遗民泪尽胡尘里，南望王师又一年。'] },
+        { title: '闻官军收河南河北', dynasty: '唐', author: '杜甫', year: 763, yearLabel: '公元 763 年', grade: 5, semester: '下', lines: ['剑外忽传收蓟北，初闻涕泪满衣裳。', '却看妻子愁何在，漫卷诗书喜欲狂。', '白日放歌须纵酒，青春作伴好还乡。', '即从巴峡穿巫峡，便下襄阳向洛阳。'] },
+        { title: '凉州词（黄河远上）', dynasty: '唐', author: '王之涣', year: 740, yearLabel: '约盛唐', grade: 5, semester: '下', lines: ['黄河远上白云间，一片孤城万仞山。', '羌笛何须怨杨柳，春风不度玉门关。'] },
+        { title: '黄鹤楼送孟浩然之广陵', dynasty: '唐', author: '李白', year: 730, yearLabel: '约 730 年', grade: 5, semester: '下', lines: ['故人西辞黄鹤楼，烟花三月下扬州。', '孤帆远影碧空尽，唯见长江天际流。'] },
+        { title: '乡村四月', dynasty: '宋', author: '翁卷', year: 1200, yearLabel: '约南宋', grade: 5, semester: '下', lines: ['绿遍山原白满川，子规声里雨如烟。', '乡村四月闲人少，才了蚕桑又插田。'] },
+        { title: '游子吟', dynasty: '唐', author: '孟郊', year: 791, yearLabel: '约 791 年', grade: 5, semester: '下', lines: ['慈母手中线，游子身上衣。', '临行密密缝，意恐迟迟归。', '谁言寸草心，报得三春晖。'] },
+        // 六年级上
+        { title: '宿建德江', dynasty: '唐', author: '孟浩然', year: 730, yearLabel: '约盛唐', grade: 6, semester: '上', lines: ['移舟泊烟渚，日暮客愁新。', '野旷天低树，江清月近人。'] },
+        { title: '六月二十七日望湖楼醉书', dynasty: '宋', author: '苏轼', year: 1072, yearLabel: '约 1072 年', grade: 6, semester: '上', lines: ['黑云翻墨未遮山，白雨跳珠乱入船。', '卷地风来忽吹散，望湖楼下水如天。'] },
+        { title: '西江月·夜行黄沙道中', dynasty: '宋', author: '辛弃疾', year: 1190, yearLabel: '约南宋', grade: 6, semester: '上', lines: ['明月别枝惊鹊，清风半夜鸣蝉。', '稻花香里说丰年，听取蛙声一片。', '七八个星天外，两三点雨山前。', '旧时茅店社林边，路转溪桥忽见。'] },
+        { title: '过故人庄', dynasty: '唐', author: '孟浩然', year: 730, yearLabel: '约盛唐', grade: 6, semester: '上', lines: ['故人具鸡黍，邀我至田家。', '绿树村边合，青山郭外斜。', '开轩面场圃，把酒话桑麻。', '待到重阳日，还来就菊花。'] },
+        { title: '七律·长征', dynasty: '现代', author: '毛泽东', year: 1935, yearLabel: '公元 1935 年', grade: 6, semester: '上', lines: ['红军不怕远征难，万水千山只等闲。', '五岭逶迤腾细浪，乌蒙磅礴走泥丸。', '金沙水拍云崖暖，大渡桥横铁索寒。', '更喜岷山千里雪，三军过后尽开颜。'] },
+        { title: '春日', dynasty: '宋', author: '朱熹', year: 1170, yearLabel: '约南宋', grade: 6, semester: '上', lines: ['胜日寻芳泗水滨，无边光景一时新。', '等闲识得东风面，万紫千红总是春。'] },
+        { title: '回乡偶书', dynasty: '唐', author: '贺知章', year: 744, yearLabel: '约 744 年', grade: 6, semester: '上', lines: ['少小离家老大回，乡音无改鬓毛衰。', '儿童相见不相识，笑问客从何处来。'] },
+        { title: '浪淘沙', dynasty: '唐', author: '刘禹锡', year: 830, yearLabel: '约中晚唐', grade: 6, semester: '上', lines: ['九曲黄河万里沙，浪淘风簸自天涯。', '如今直上银河去，同到牵牛织女家。'] },
+        { title: '江南春', dynasty: '唐', author: '杜牧', year: 840, yearLabel: '约晚唐', grade: 6, semester: '上', lines: ['千里莺啼绿映红，水村山郭酒旗风。', '南朝四百八十寺，多少楼台烟雨中。'] },
+        { title: '书湖阴先生壁', dynasty: '宋', author: '王安石', year: 1075, yearLabel: '约北宋', grade: 6, semester: '上', lines: ['茅檐长扫净无苔，花木成畦手自栽。', '一水护田将绿绕，两山排闼送青来。'] },
+        // 六年级下
+        { title: '寒食', dynasty: '唐', author: '韩翃', year: 780, yearLabel: '约中唐', grade: 6, semester: '下', lines: ['春城无处不飞花，寒食东风御柳斜。', '日暮汉宫传蜡烛，轻烟散入五侯家。'] },
+        { title: '迢迢牵牛星', dynasty: '汉', author: '《古诗十九首》', year: 100, yearLabel: '约东汉', grade: 6, semester: '下', lines: ['迢迢牵牛星，皎皎河汉女。', '纤纤擢素手，札札弄机杼。', '终日不成章，泣涕零如雨。', '河汉清且浅，相去复几许？', '盈盈一水间，脉脉不得语。'] },
+        { title: '十五夜望月', dynasty: '唐', author: '王建', year: 800, yearLabel: '约中唐', grade: 6, semester: '下', lines: ['中庭地白树栖鸦，冷露无声湿桂花。', '今夜月明人尽望，不知秋思落谁家。'] },
+        { title: '长歌行', dynasty: '汉', author: '汉乐府', year: 100, yearLabel: '约汉代', grade: 6, semester: '下', lines: ['青青园中葵，朝露待日晞。', '阳春布德泽，万物生光辉。', '常恐秋节至，焜黄华叶衰。', '百川东到海，何时复西归？', '少壮不努力，老大徒伤悲。'] },
+        { title: '马诗', dynasty: '唐', author: '李贺', year: 810, yearLabel: '约中唐', grade: 6, semester: '下', lines: ['大漠沙如雪，燕山月似钩。', '何当金络脑，快走踏清秋。'] },
+        { title: '石灰吟', dynasty: '明', author: '于谦', year: 1420, yearLabel: '约 1410–1430 年代', grade: 6, semester: '下', lines: ['千锤万凿出深山，烈火焚烧若等闲。', '粉骨碎身浑不怕，要留清白在人间。'] },
+        { title: '竹石', dynasty: '清', author: '郑燮', year: 1750, yearLabel: '约清代中期', grade: 6, semester: '下', lines: ['咬定青山不放松，立根原在破岩中。', '千磨万击还坚劲，任尔东西南北风。'] },
+        { title: '春夜喜雨', dynasty: '唐', author: '杜甫', year: 761, yearLabel: '公元 761 年', grade: 6, semester: '下', lines: ['好雨知时节，当春乃发生。', '随风潜入夜，润物细无声。', '野径云俱黑，江船火独明。', '晓看红湿处，花重锦官城。'] },
+        { title: '江上渔者', dynasty: '宋', author: '范仲淹', year: 1030, yearLabel: '约北宋', grade: 6, semester: '下', lines: ['江上往来人，但爱鲈鱼美。', '君看一叶舟，出没风波里。'] },
+        { title: '泊船瓜洲', dynasty: '宋', author: '王安石', year: 1075, yearLabel: '约 1075 年', grade: 6, semester: '下', lines: ['京口瓜洲一水间，钟山只隔数重山。', '春风又绿江南岸，明月何时照我还。'] },
+        { title: '游园不值', dynasty: '宋', author: '叶绍翁', year: 1220, yearLabel: '约南宋', grade: 6, semester: '下', lines: ['应怜屐齿印苍苔，小扣柴扉久不开。', '春色满园关不住，一枝红杏出墙来。'] },
+        { title: '卜算子·送鲍浩然之浙东', dynasty: '宋', author: '王观', year: 1070, yearLabel: '约北宋', grade: 6, semester: '下', lines: ['水是眼波横，山是眉峰聚。', '欲问行人去那边？眉眼盈盈处。', '才始送春归，又送君归去。', '若到江南赶上春，千万和春住。'] },
+        { title: '浣溪沙', dynasty: '宋', author: '苏轼', year: 1082, yearLabel: '约 1082 年', grade: 6, semester: '下', lines: ['山下兰芽短浸溪，松间沙路净无泥，潇潇暮雨子规啼。', '谁道人生无再少？门前流水尚能西！休将白发唱黄鸡。'] },
+        { title: '早春呈水部张十八员外', dynasty: '唐', author: '韩愈', year: 823, yearLabel: '约 823 年', grade: 6, semester: '下', lines: ['天街小雨润如酥，草色遥看近却无。', '最是一年春好处，绝胜烟柳满皇都。'] },
+        { title: '送元二使安西', dynasty: '唐', author: '王维', year: 737, yearLabel: '约 737 年', grade: 6, semester: '下', lines: ['渭城朝雨浥轻尘，客舍青青柳色新。', '劝君更尽一杯酒，西出阳关无故人。'] }
+      ];
+
+      POEMS.sort(function (a, b) {
+        if (a.year !== b.year) return a.year - b.year;
+        if (a.grade !== b.grade) return a.grade - b.grade;
+        return a.title.localeCompare(b.title, 'zh');
       });
+      POEMS.forEach(function (p, i) { p.id = 'poem-' + i; });
+
+      var filters = { dynasty: '全部', grade: '全部', semester: '全部' };
+      var poemList = document.getElementById('poemList');
+      var dotsBox = document.getElementById('axisDots');
+      var emptyTip = document.getElementById('emptyTip');
+      var statLine = document.getElementById('statLine');
+
+      function yearToPct(year) {
+        var y = Math.max(AXIS_START, Math.min(AXIS_END, year));
+        return ((y - AXIS_START) / (AXIS_END - AXIS_START)) * 100;
+      }
+
+      function gradeLabel(p) {
+        return GRADE_CN[p.grade] + '年级' + p.semester + '册';
+      }
+
+      function matches(p) {
+        if (filters.dynasty !== '全部' && p.dynasty !== filters.dynasty) return false;
+        if (filters.grade !== '全部' && String(p.grade) !== filters.grade) return false;
+        if (filters.semester !== '全部' && p.semester !== filters.semester) return false;
+        return true;
+      }
+
+      function buildAxis() {
+        dotsBox.innerHTML = '';
+        POEMS.forEach(function (p, i) {
+          var lane = i % 4;
+          var top = 6 + lane * 14;
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'axis-dot';
+          dot.setAttribute('data-id', p.id);
+          dot.setAttribute('data-dynasty', p.dynasty);
+          dot.setAttribute('data-grade', p.grade);
+          dot.setAttribute('data-semester', p.semester);
+          dot.title = p.title + ' · ' + gradeLabel(p) + ' · ' + p.yearLabel;
+          dot.setAttribute('aria-label', p.title + '，' + gradeLabel(p));
+          dot.style.left = yearToPct(p.year) + '%';
+          dot.style.top = top + 'px';
+          dot.style.background = DOT_COLOR[p.dynasty] || '#e74c3c';
+          dotsBox.appendChild(dot);
+        });
+      }
+
+      function render() {
+        var visible = POEMS.filter(matches);
+        poemList.innerHTML = '';
+        emptyTip.style.display = visible.length ? 'none' : 'block';
+        statLine.textContent = '共收录 ' + POEMS.length + ' 首，当前显示 ' + visible.length + ' 首';
+
+        var currentDynasty = null;
+        var eraEl = null;
+        visible.forEach(function (p, idx) {
+          if (p.dynasty !== currentDynasty) {
+            currentDynasty = p.dynasty;
+            eraEl = document.createElement('section');
+            eraEl.className = 'era';
+            eraEl.setAttribute('data-dynasty', p.dynasty);
+            var label = document.createElement('div');
+            label.className = 'era-label';
+            label.textContent = p.dynasty + ' · ' + (ERA_RANGE[p.dynasty] || '');
+            label.style.color = DOT_COLOR[p.dynasty] || '#c0392b';
+            eraEl.appendChild(label);
+            poemList.appendChild(eraEl);
+          }
+          var article = document.createElement('article');
+          article.className = 'poem ' + (idx % 2 === 0 ? 'side-left' : 'side-right');
+          article.id = p.id;
+          article.setAttribute('data-dynasty', p.dynasty);
+          var lines = p.lines.map(function (line) {
+            return '<li>' + line + '</li>';
+          }).join('');
+          article.innerHTML =
+            '<div class="poem-header">' +
+              '<span class="poem-title">' + p.title + '</span>' +
+              '<span class="tag dynasty">' + p.dynasty + '</span>' +
+              '<span class="tag poem-grade">' + gradeLabel(p) + '</span>' +
+              '<span class="tag poem-year">' + p.yearLabel + '</span>' +
+              '<span class="poem-meta">' + p.author + '</span>' +
+            '</div>' +
+            '<ul class="poem-lines">' + lines + '</ul>';
+          article.style.setProperty('--node', DOT_COLOR[p.dynasty] || '#e74c3c');
+          eraEl.appendChild(article);
+        });
+
+        // apply node colors
+        poemList.querySelectorAll('.poem').forEach(function (el) {
+          var c = DOT_COLOR[el.getAttribute('data-dynasty')] || '#e74c3c';
+          el.style.setProperty('--node', c);
+        });
+
+        dotsBox.querySelectorAll('.axis-dot').forEach(function (dot) {
+          var p = POEMS.find(function (x) { return x.id === dot.getAttribute('data-id'); });
+          var show = p && matches(p);
+          dot.classList.toggle('is-hidden', !show);
+        });
+      }
+
+      // inject CSS for node color variable
+      var style = document.createElement('style');
+      style.textContent = '.poem::before{background:var(--node,#e74c3c)!important;}';
+      document.head.appendChild(style);
+
+      function bindFilter(barId, key) {
+        var bar = document.getElementById(barId);
+        bar.addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (!btn) return;
+          bar.querySelectorAll('button').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          filters[key] = btn.getAttribute('data-value');
+          render();
+        });
+      }
+
+      bindFilter('dynastyBar', 'dynasty');
+      bindFilter('gradeBar', 'grade');
+      bindFilter('semesterBar', 'semester');
+
+      dotsBox.addEventListener('click', function (e) {
+        var dot = e.target.closest('.axis-dot');
+        if (!dot || dot.classList.contains('is-hidden')) return;
+        var target = document.getElementById(dot.getAttribute('data-id'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('is-flash');
+        setTimeout(function () { target.classList.remove('is-flash'); }, 1200);
+      });
+
+      buildAxis();
+      render();
     })();
   </script>
 </body>
