@@ -313,7 +313,7 @@
     </ul>
 
     <h2 class="section-title">古诗时间线</h2>
-    <p class="timeline-note">依据统编（部编）版小学语文教材课文与“日积月累”篇目整理；年份多为通行考证。竖轴居中，按首左右交替。不含文言文。</p>
+    <p class="timeline-note">依据统编（部编）版小学语文教材课文与“日积月累”篇目整理。列表按作者出生年排序；同一作者作品固定在时间线同一侧，不同作者左右交替。不含文言文。</p>
     <p class="stat-line" id="statLine">共收录 0 首</p>
 
     <div class="axis-map">
@@ -346,7 +346,7 @@
           <span style="left:100%">2000</span>
         </div>
       </div>
-      <p class="axis-hint">色带按公元 0–2000 年比例绘制。点击圆点可跳到对应古诗。</p>
+      <p class="axis-hint">色带按公元 0–2000 年比例绘制；上方圆点按作者出生年定位。点击可跳到对应古诗。</p>
     </div>
 
     <div class="filter-group">
@@ -404,6 +404,67 @@
         '先秦': '#7f8c8d', '汉': '#95a5a6', '南北朝': '#7f8c8d',
         '唐': '#e74c3c', '宋': '#e67e22', '元': '#8e44ad',
         '明': '#2980b9', '清': '#16a085', '现代': '#c0392b'
+      };
+
+      // 作者出生年（公元；无名氏/总集取大致年代）
+      var AUTHOR_BIRTH = {
+        '汉乐府': 100,
+        '《古诗十九首》': 100,
+        '北朝民歌': 500,
+        '李峤': 644,
+        '贺知章': 659,
+        '王翰': 687,
+        '孟浩然': 689,
+        '王之涣': 688,
+        '王昌龄': 698,
+        '李白': 701,
+        '王维': 701,
+        '高适': 704,
+        '杜甫': 712,
+        '张继': 715,
+        '韩翃': 720,
+        '张志和': 732,
+        '卢纶': 739,
+        '孟郊': 751,
+        '王建': 767,
+        '韩愈': 768,
+        '白居易': 772,
+        '刘禹锡': 772,
+        '李绅': 772,
+        '贾岛': 779,
+        '胡令能': 785,
+        '李贺': 790,
+        '杜牧': 803,
+        '李商隐': 813,
+        '罗隐': 833,
+        '林杰': 850,
+        '骆宾王': 619,
+        '范仲淹': 989,
+        '王安石': 1021,
+        '王观': 1035,
+        '苏轼': 1037,
+        '曾几': 1085,
+        '李清照': 1084,
+        '陆游': 1125,
+        '范成大': 1126,
+        '杨万里': 1127,
+        '朱熹': 1130,
+        '辛弃疾': 1140,
+        '林升': 1150,
+        '翁卷': 1160,
+        '雷震': 1180,
+        '叶绍翁': 1194,
+        '卢梅坡': 1200,
+        '王冕': 1287,
+        '于谦': 1398,
+        '唐寅': 1470,
+        '查慎行': 1650,
+        '纳兰性德': 1655,
+        '郑燮': 1693,
+        '袁枚': 1716,
+        '龚自珍': 1792,
+        '高鼎': 1820,
+        '毛泽东': 1893
       };
 
       // 部编版小学语文古诗词（课文+日积月累），不含文言文
@@ -531,9 +592,23 @@
         { title: '送元二使安西', dynasty: '唐', author: '王维', year: 737, yearLabel: '约 737 年', grade: 6, semester: '下', lines: ['渭城朝雨浥轻尘，客舍青青柳色新。', '劝君更尽一杯酒，西出阳关无故人。'] }
       ];
 
+      function authorBirth(p) {
+        return AUTHOR_BIRTH[p.author] != null ? AUTHOR_BIRTH[p.author] : p.year;
+      }
+
+      function authorBirthLabel(p) {
+        var y = AUTHOR_BIRTH[p.author];
+        if (y == null) return p.author;
+        if (y <= 150) return p.author + '（约公元 ' + y + ' 年）';
+        return p.author + '（约 ' + y + ' 年出生）';
+      }
+
       POEMS.sort(function (a, b) {
+        var ba = authorBirth(a);
+        var bb = authorBirth(b);
+        if (ba !== bb) return ba - bb;
+        if (a.author !== b.author) return a.author.localeCompare(b.author, 'zh');
         if (a.year !== b.year) return a.year - b.year;
-        if (a.grade !== b.grade) return a.grade - b.grade;
         return a.title.localeCompare(b.title, 'zh');
       });
       POEMS.forEach(function (p, i) { p.id = 'poem-' + i; });
@@ -560,11 +635,25 @@
         return true;
       }
 
+      // 按可见列表中作者出现顺序交替左右：同一作者始终同侧
+      function authorSideMap(visible) {
+        var map = {};
+        var order = 0;
+        visible.forEach(function (p) {
+          if (map[p.author] == null) {
+            map[p.author] = order % 2 === 0 ? 'side-left' : 'side-right';
+            order += 1;
+          }
+        });
+        return map;
+      }
+
       function buildAxis() {
         dotsBox.innerHTML = '';
         POEMS.forEach(function (p, i) {
           var lane = i % 4;
           var top = 6 + lane * 14;
+          var birth = authorBirth(p);
           var dot = document.createElement('button');
           dot.type = 'button';
           dot.className = 'axis-dot';
@@ -572,9 +661,9 @@
           dot.setAttribute('data-dynasty', p.dynasty);
           dot.setAttribute('data-grade', p.grade);
           dot.setAttribute('data-semester', p.semester);
-          dot.title = p.title + ' · ' + gradeLabel(p) + ' · ' + p.yearLabel;
-          dot.setAttribute('aria-label', p.title + '，' + gradeLabel(p));
-          dot.style.left = yearToPct(p.year) + '%';
+          dot.title = p.title + ' · ' + p.author + ' · 约' + birth + '年出生 · ' + gradeLabel(p);
+          dot.setAttribute('aria-label', p.title + '，' + p.author + '，' + gradeLabel(p));
+          dot.style.left = yearToPct(birth) + '%';
           dot.style.top = top + 'px';
           dot.style.background = DOT_COLOR[p.dynasty] || '#e74c3c';
           dotsBox.appendChild(dot);
@@ -585,25 +674,27 @@
         var visible = POEMS.filter(matches);
         poemList.innerHTML = '';
         emptyTip.style.display = visible.length ? 'none' : 'block';
-        statLine.textContent = '共收录 ' + POEMS.length + ' 首，当前显示 ' + visible.length + ' 首';
+        statLine.textContent = '共收录 ' + POEMS.length + ' 首，当前显示 ' + visible.length + ' 首（按作者出生年排序）';
 
-        var currentDynasty = null;
+        var sideMap = authorSideMap(visible);
+        var currentAuthor = null;
         var eraEl = null;
-        visible.forEach(function (p, idx) {
-          if (p.dynasty !== currentDynasty) {
-            currentDynasty = p.dynasty;
+        visible.forEach(function (p) {
+          if (p.author !== currentAuthor) {
+            currentAuthor = p.author;
             eraEl = document.createElement('section');
             eraEl.className = 'era';
             eraEl.setAttribute('data-dynasty', p.dynasty);
             var label = document.createElement('div');
             label.className = 'era-label';
-            label.textContent = p.dynasty + ' · ' + (ERA_RANGE[p.dynasty] || '');
+            var birth = authorBirth(p);
+            label.textContent = p.author + ' · 约 ' + birth + ' 年出生';
             label.style.color = DOT_COLOR[p.dynasty] || '#c0392b';
             eraEl.appendChild(label);
             poemList.appendChild(eraEl);
           }
           var article = document.createElement('article');
-          article.className = 'poem ' + (idx % 2 === 0 ? 'side-left' : 'side-right');
+          article.className = 'poem ' + (sideMap[p.author] || 'side-left');
           article.id = p.id;
           article.setAttribute('data-dynasty', p.dynasty);
           var lines = p.lines.map(function (line) {
@@ -622,7 +713,6 @@
           eraEl.appendChild(article);
         });
 
-        // apply node colors
         poemList.querySelectorAll('.poem').forEach(function (el) {
           var c = DOT_COLOR[el.getAttribute('data-dynasty')] || '#e74c3c';
           el.style.setProperty('--node', c);
