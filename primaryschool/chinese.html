@@ -193,6 +193,40 @@
       border: 1px solid #f0d4c0;
       border-radius: 999px;
     }
+    .dynasty-divider {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.4rem 0 1.1rem;
+      padding: 0 0.5rem;
+    }
+    .dynasty-divider::before,
+    .dynasty-divider::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4a574 20%, #d4a574 80%, transparent);
+    }
+    .dynasty-divider-label {
+      flex-shrink: 0;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      background: #fff7ef;
+      border: 1px solid #e0b892;
+      color: #8a5a2b;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(138, 90, 43, 0.08);
+    }
+    .dynasty-divider-label .sep {
+      margin: 0 0.45rem;
+      color: #c4a07a;
+      font-weight: 500;
+    }
 
     .poem {
       position: relative;
@@ -678,8 +712,30 @@
 
         var sideMap = authorSideMap(visible);
         var currentAuthor = null;
+        var currentDynasty = null;
         var eraEl = null;
         visible.forEach(function (p) {
+          if (currentDynasty && p.dynasty !== currentDynasty) {
+            var divider = document.createElement('div');
+            divider.className = 'dynasty-divider';
+            divider.setAttribute('role', 'separator');
+            divider.setAttribute('aria-label', currentDynasty + '与' + p.dynasty + '分界');
+            var dLabel = document.createElement('span');
+            dLabel.className = 'dynasty-divider-label';
+            dLabel.innerHTML =
+              '<span style="color:' + (DOT_COLOR[currentDynasty] || '#8a5a2b') + '">' + currentDynasty + '</span>' +
+              '<span class="sep">｜</span>' +
+              '<span style="color:' + (DOT_COLOR[p.dynasty] || '#8a5a2b') + '">' + p.dynasty + '</span>';
+            if (ERA_RANGE[p.dynasty]) {
+              dLabel.innerHTML +=
+                '<span class="sep">·</span>' +
+                '<span style="font-weight:500;font-size:0.85rem;color:#8a6a55">' + ERA_RANGE[p.dynasty] + '</span>';
+            }
+            divider.appendChild(dLabel);
+            poemList.appendChild(divider);
+          }
+          currentDynasty = p.dynasty;
+
           if (p.author !== currentAuthor) {
             currentAuthor = p.author;
             eraEl = document.createElement('section');
